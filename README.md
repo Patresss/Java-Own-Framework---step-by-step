@@ -13,7 +13,7 @@ pokaże koncept takiego frameworka i udowodni, że nie kryje się tam żadna mag
 * [Krok 2a - Dynamic Proxy](#Krok-2a---Dynamic-Proxy)
 * [Krok 2b - CGLib](#Krok-2b---CGLib)
 * [Krok 3 - Application Context](#Krok-3---Application-Context)
-* [Krok 4 - Tworzenie proxy w `ApplicationContext`](#krok-4---tworzenie-proxy-w-applicationcontext`)
+* [Krok 4 - Tworzenie proxy w `ApplicationContext`](#krok-4---tworzenie-proxy-w-applicationcontext)
 * [Krok 5 - Implementacja innych adnotacji](#Krok-5---Implementacja-innych-adnotacji)
 * [Krok 6 - Scope](#Krok-6---Scope)
 * [Krok 7 - Refactoring](#Krok-7---Refactoring)
