@@ -9,11 +9,11 @@ pokaże koncept takiego frameworka i udowodni, że nie kryje się tam żadna mag
 ---
 ## Spis kroków
 * [Krok 1 - Budowa aplikacji bez frameworka](#krok-1---Budowa-aplikacji-bez-frameworka)
-* [Krok 2 (teoria) - JDK Dynamic Proxy (a) vs CGLib (b)](#Krok-2-\(teoria\)---JDK-Dynamic-Proxy-\(a\)-vs-CGLib-\(b\))
+* [Krok 2 (teoria) - JDK Dynamic Proxy (a) vs CGLib (b)](#krok-2-teoria---jdk-dynamic-proxy-a-vs-cglib-b)
 * [Krok 2a - Dynamic Proxy](#Krok-2a---Dynamic-Proxy)
 * [Krok 2b - CGLib](#Krok-2b---CGLib)
 * [Krok 3 - Application Context](#Krok-3---Application-Context)
-* [Krok 4 - Tworzenie proxy w `ApplicationContext`](#Krok-4---Tworzenie-proxy-w-`ApplicationContext`)
+* [Krok 4 - Tworzenie proxy w `ApplicationContext`](#krok-4---tworzenie-proxy-w-applicationcontext`)
 * [Krok 5 - Implementacja innych adnotacji](#Krok-5---Implementacja-innych-adnotacji)
 * [Krok 6 - Scope](#Krok-6---Scope)
 * [Krok 7 - Refactoring](#Krok-7---Refactoring)
@@ -74,7 +74,7 @@ doSmthAfter();
 * Tworzenie instancji oraz wywoływanie metod przy użyciu Dynamic Proxy jest szybsze od CGLib.
 * Tworzy klasy `MyClass$$EnhancerBySpringCGLIB`.
 
-![Żródło: https://www.baeldung.com/spring-aop-vs-aspectj](https://github.com/Patresss/Java-Own-Framework---step-by-step/blob/master/images/springaop-process.png)
+![Żródło: https://www.baeldung.com/spring-aop-vs-aspectj](https://github.com/Patresss/Java-Own-Framework---step-by-step/blob/main/images/springaop-process.png)
 
 
 ### Domyślny typ
@@ -84,7 +84,7 @@ W Springu możemy spotkać proxy:
 Domyślnym typem jest Dynamic Proxy.
 
 https://docs.spring.io/spring-framework/docs/5.3.x/reference/html/core.html#aop-introduction-proxies
-![](https://github.com/Patresss/Java-Own-Framework---step-by-step/blob/master/images/Default%20type%20-%20Spring%20doc.JPG)
+![](https://github.com/Patresss/Java-Own-Framework---step-by-step/blob/main/images/Default%20type%20-%20Spring%20doc.JPG)
 
 
 Jednak gdy stworzymy nową aplikację w Spring Initializr to możemy się zdziwić. Pomimo tego, że dodamy interfejs to w debugu zobaczymy klasę stworzoną przez CGLib `X$$EnhancerBySpringCGLIB`
@@ -316,8 +316,8 @@ public class Step2bApp {
 ---
 **Zwróć uwagę**
 
-Aby uruchomić CGLib w Java 16, musimy dodać JVM option - `--illegal-access=permit`
-https://github.com/cglib/cglib/issues/191
+Aby uruchomić CGLib w Java 16, musimy dodać JVM option - `--illegal-access=permit` - https://github.com/cglib/cglib/issues/191
+
 ---
 
 ## Krok 3 - Application Context
