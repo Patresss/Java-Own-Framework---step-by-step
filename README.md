@@ -1,8 +1,8 @@
 # Java Own Framework - krok po kroku
 
-Celem tego repozytorium jest pokazanie, w jaki sposób działa dependency injection framework np. Spring.
+Celem tego projektu jest pokazanie, w jaki sposób działa dependency injection framework np. Spring.
 
-Projekt zademonstruje krok po kroku, w jaki sposób zbudować własny framework. Oczywiście jest to tylko uproszczona forma.
+Repozytorium zademonstruje krok po kroku, w jaki sposób zbudować własny framework. Oczywiście jest to tylko uproszczona forma.
 Spring jest rozwijany od prawie 20 lat przez setki programistów, więc ledwo zbliżymy się do niego. Jednak repozytorium
 pokaże koncept takiego frameworka i udowodni, że nie kryje się tam żadna magia.
 
@@ -74,18 +74,15 @@ doSmthAfter();
 * Tworzenie instancji oraz wywoływanie metod przy użyciu Dynamic Proxy jest szybsze od CGLib.
 * Tworzy klasy `MyClass$$EnhancerBySpringCGLIB`.
 
-![Żródło: https://www.baeldung.com/spring-aop-vs-aspectj](https://github.com/Patresss/Java-Own-Framework---step-by-step/blob/main/images/springaop-process.png)
-
+![](https://github.com/Patresss/Java-Own-Framework---step-by-step/blob/main/images/springaop-process.png)
+Żródło: https://www.baeldung.com/spring-aop-vs-aspectj
 
 ### Domyślny typ
-W Springu możemy spotkać proxy: 
-* Dynamic Proxy
-* CGLib Proxy 
-Domyślnym typem jest Dynamic Proxy.
+Domyślnym typem w Springu jest Dynamic Proxy.
 
-https://docs.spring.io/spring-framework/docs/5.3.x/reference/html/core.html#aop-introduction-proxies
+
 ![](https://github.com/Patresss/Java-Own-Framework---step-by-step/blob/main/images/Default%20type%20-%20Spring%20doc.JPG)
-
+Żródło: https://docs.spring.io/spring-framework/docs/5.3.x/reference/html/core.html#aop-introduction-proxies
 
 Jednak gdy stworzymy nową aplikację w Spring Initializr to możemy się zdziwić. Pomimo tego, że dodamy interfejs to w debugu zobaczymy klasę stworzoną przez CGLib `X$$EnhancerBySpringCGLIB`
 
@@ -386,13 +383,13 @@ public ApplicationContext(Package packageContext) {
 }
 ```
 
-[1] Nasz context będzie posiadał jedną publiczną metodę do wyciągania beana. 
-[2] Założyliśmy, że w przyszłości będziemy tworzyć proxy za pomocą Dynamic Proxy, dlatego ten argument będzie musiał być interfejsem. 
-[3] Aby utworzyć instancję, musimy najpierw poszukać odpowiedniej implementacji. Podobnie jak w przypadku Springa, nie możemy posiadać więcej niż jedną implementację interfejsu, ponieważ framework nie wiedziałby, której miałby użyć (`NoUniqueBeanDefinitionException` - bez `@Qualifier`.
-[4] Znając implementację, możemy brać się za tworzenie nowej instancji.
-[5] Pierwszym krokiem, będzie poszukanie konstruktora. Podobnie jak w przypadku Springa: jeżeli mamy tylko jeden konstruktor to sprawa jest prosta. W przypadku gdy tych konstruktorów mamy więcej, szukamy tego z adnotacją `@Autowired`.
-[6] Jednak sam konstruktor to nie wszystko. Teraz musimy poszukać jego argumentów. A tymi argumentami są pozostałe beany, które należy pobrać z [1] używając rekurencji.
-[7] Mając odpowiedni konstruktor i parametry możemy w końcu stworzyć nową instancję.
+* [1] Nasz context będzie posiadał jedną publiczną metodę do wyciągania beana. 
+* [2] Założyliśmy, że w przyszłości będziemy tworzyć proxy za pomocą Dynamic Proxy, dlatego ten argument będzie musiał być interfejsem. 
+* [3] Aby utworzyć instancję, musimy najpierw poszukać odpowiedniej implementacji. Podobnie jak w przypadku Springa, nie możemy posiadać więcej niż jedną implementację interfejsu, ponieważ framework nie wiedziałby, której miałby użyć (`NoUniqueBeanDefinitionException` - bez `@Qualifier`.
+* [4] Znając implementację, możemy brać się za tworzenie nowej instancji.
+* [5] Pierwszym krokiem, będzie poszukanie konstruktora. Podobnie jak w przypadku Springa: jeżeli mamy tylko jeden konstruktor to sprawa jest prosta. W przypadku gdy tych konstruktorów mamy więcej, szukamy tego z adnotacją `@Autowired`.
+* [6] Jednak sam konstruktor to nie wszystko. Teraz musimy poszukać jego argumentów. A tymi argumentami są pozostałe beany, które należy pobrać z [1] używając rekurencji.
+* [7] Mając odpowiedni konstruktor i parametry możemy w końcu stworzyć nową instancję.
 
 ```java
 
