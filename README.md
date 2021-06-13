@@ -9,7 +9,7 @@ pokaże koncept takiego frameworka i udowodni, że nie kryje się tam żadna mag
 ---
 ## Spis kroków
 * [Krok 1 - Budowa aplikacji bez frameworka](#krok-1---Budowa-aplikacji-bez-frameworka)
-* [Krok 2 (teoria) - JDK Dynamic Proxy (a) vs CGLib (b)](#Krok-2-(teoria)---JDK-Dynamic-Proxy-(a)-vs-CGLib-(b))
+* [Krok 2 (teoria) - JDK Dynamic Proxy (a) vs CGLib (b)](#Krok-2-\(teoria\)---JDK-Dynamic-Proxy-\(a\)-vs-CGLib-\(b\))
 * [Krok 2a - Dynamic Proxy](#Krok-2a---Dynamic-Proxy)
 * [Krok 2b - CGLib](#Krok-2b---CGLib)
 * [Krok 3 - Application Context](#Krok-3---Application-Context)
