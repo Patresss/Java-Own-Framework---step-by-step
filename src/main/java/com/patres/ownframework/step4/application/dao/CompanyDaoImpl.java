@@ -1,7 +1,7 @@
 package com.patres.ownframework.step4.application.dao;
 
-import com.patres.ownframework.step4.framework.annotation.Component;
 import com.patres.ownframework.step4.application.model.Company;
+import com.patres.ownframework.step4.framework.annotation.Component;
 import com.patres.ownframework.step4.framework.annotation.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

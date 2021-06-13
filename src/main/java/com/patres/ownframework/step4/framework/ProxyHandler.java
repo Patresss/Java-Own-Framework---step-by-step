@@ -56,5 +56,5 @@ public class ProxyHandler implements InvocationHandler {
     private void rollbackTransaction() {
         logger.error("ROLLBACK TRANSACTION");
     }
-    
+
 }

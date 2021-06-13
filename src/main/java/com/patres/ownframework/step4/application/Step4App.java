@@ -1,8 +1,8 @@
 package com.patres.ownframework.step4.application;
 
-import com.patres.ownframework.step4.framework.ApplicationContext;
 import com.patres.ownframework.step4.application.model.Company;
 import com.patres.ownframework.step4.application.service.CompanyService;
+import com.patres.ownframework.step4.framework.ApplicationContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

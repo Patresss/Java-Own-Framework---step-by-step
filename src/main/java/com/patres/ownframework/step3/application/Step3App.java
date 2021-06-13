@@ -1,7 +1,5 @@
 package com.patres.ownframework.step3.application;
 
-import com.patres.ownframework.step3.application.dao.CompanyDao;
-import com.patres.ownframework.step3.application.dao.CompanyDaoImpl;
 import com.patres.ownframework.step3.application.model.Company;
 import com.patres.ownframework.step3.application.service.CompanyService;
 import com.patres.ownframework.step3.framework.ApplicationContext;
