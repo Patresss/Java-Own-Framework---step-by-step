@@ -18,14 +18,26 @@ public class ProxyHandler implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         try {
-            logger.info("TRANSACTION:   BEGIN");
+            beginTransaction();
             final Object invoke = method.invoke(objectToHandle, args);
-            logger.info("TRANSACTION:   COMMIT");
+            commitTransaction();
             return invoke;
         } catch (Exception e) {
-            logger.info("TRANSACTION:   ROLLBACK");
+            rollbackTransaction();
             throw e;
         }
+    }
+
+    private void beginTransaction() {
+        logger.debug("BEGIN TRANSACTION");
+    }
+
+    private void commitTransaction() {
+        logger.debug("COMMIT TRANSACTION");
+    }
+
+    private void rollbackTransaction() {
+        logger.error("ROLLBACK TRANSACTION");
     }
 
 }

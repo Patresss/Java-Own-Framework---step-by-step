@@ -1,4 +1,4 @@
-package com.patres.ownframework.step1;
+package com.patres.ownframework.step1.application;
 
 import com.patres.ownframework.step1.application.dao.CompanyDaoImpl;
 import com.patres.ownframework.step1.application.model.Company;

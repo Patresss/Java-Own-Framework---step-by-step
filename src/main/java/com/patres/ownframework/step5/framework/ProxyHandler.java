@@ -40,12 +40,12 @@ public class ProxyHandler implements InvocationHandler {
 
     private Object handleTransaction(Method method, Object[] args) throws IllegalAccessException, InvocationTargetException {
         try {
-            logger.info("TRANSACTION:   BEGIN");
+            beginTransaction();
             final Object invoke = calculateResult(method, args);
-            logger.info("TRANSACTION:   COMMIT");
+            commitTransaction();
             return invoke;
         } catch (Exception e) {
-            logger.info("TRANSACTION:   ROLLBACK");
+            rollbackTransaction();
             throw e;
         }
     }
@@ -79,4 +79,16 @@ public class ProxyHandler implements InvocationHandler {
         return List.of(method, Arrays.asList(args));
     }
 
+    private void beginTransaction() {
+        logger.debug("BEGIN TRANSACTION");
+    }
+
+    private void commitTransaction() {
+        logger.debug("COMMIT TRANSACTION");
+    }
+
+    private void rollbackTransaction() {
+        logger.error("ROLLBACK TRANSACTION");
+    }
+    
 }

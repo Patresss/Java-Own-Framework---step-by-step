@@ -18,30 +18,42 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public void createCompany(Company company) {
         try {
-            logger.info("TRANSACTION:   BEGIN");
+            beginTransaction();
 
             logger.info("SERVICE:   START - create company");
             companyDao.createCompany(company);
             logger.info("SERVICE:   END - create company");
 
-            logger.info("TRANSACTION:   COMMIT");
+            commitTransaction();
         } catch (Exception e) {
-            logger.info("TRANSACTION:   ROLLBACK");
+            rollbackTransaction();
         }
     }
 
     @Override
     public void updateCompany(Company company) {
         try {
-            logger.info("TRANSACTION:   BEGIN");
+            beginTransaction();
 
             logger.info("SERVICE:   START - update company");
             companyDao.createCompany(company);
             logger.info("SERVICE:   END - update company");
 
-            logger.info("TRANSACTION:   COMMIT");
+            commitTransaction();
         } catch (Exception e) {
-            logger.info("TRANSACTION:   ROLLBACK");
+            rollbackTransaction();
         }
+    }
+
+    private void beginTransaction() {
+        logger.debug("BEGIN TRANSACTION");
+    }
+
+    private void commitTransaction() {
+        logger.debug("COMMIT TRANSACTION");
+    }
+
+    private void rollbackTransaction() {
+        logger.error("ROLLBACK TRANSACTION");
     }
 }

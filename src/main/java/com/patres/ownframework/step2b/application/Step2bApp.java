@@ -1,11 +1,10 @@
-package com.patres.ownframework.step2b;
+package com.patres.ownframework.step2b.application;
 
 import com.patres.ownframework.step2b.application.dao.CompanyDao;
 import com.patres.ownframework.step2b.application.model.Company;
 import com.patres.ownframework.step2b.application.service.CompanyService;
 import com.patres.ownframework.step2b.framework.ProxyMethodInterceptor;
 import net.sf.cglib.proxy.Enhancer;
-import net.sf.cglib.proxy.MethodInterceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

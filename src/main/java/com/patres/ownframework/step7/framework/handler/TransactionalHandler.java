@@ -15,7 +15,7 @@ public class TransactionalHandler extends AbstractProxyHandler {
     }
 
     public Object executeWithTransaction(final Supplier<Object> resultSupplier) {
-        openTransaction();
+        beginTransaction();
         try {
             Object result = resultSupplier.get();
             commitTransaction();
@@ -26,8 +26,8 @@ public class TransactionalHandler extends AbstractProxyHandler {
         }
     }
 
-    private void openTransaction() {
-        logger.debug("OPEN TRANSACTION");
+    private void beginTransaction() {
+        logger.debug("BEGIN TRANSACTION");
     }
 
     private void commitTransaction() {

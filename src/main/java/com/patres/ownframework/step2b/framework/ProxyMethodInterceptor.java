@@ -14,13 +14,26 @@ public class ProxyMethodInterceptor implements MethodInterceptor {
     @Override
     public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
         try {
-            logger.info("TRANSACTION:   BEGIN");
+            beginTransaction();
             final Object invoke = proxy.invokeSuper(obj, args);
-            logger.info("TRANSACTION:   COMMIT");
+            commitTransaction();
             return invoke;
         } catch (Exception e) {
-            logger.info("TRANSACTION:   ROLLBACK");
+            rollbackTransaction();
             throw e;
         }
     }
+
+    private void beginTransaction() {
+        logger.debug("BEGIN TRANSACTION");
+    }
+
+    private void commitTransaction() {
+        logger.debug("COMMIT TRANSACTION");
+    }
+
+    private void rollbackTransaction() {
+        logger.error("ROLLBACK TRANSACTION");
+    }
+    
 }
