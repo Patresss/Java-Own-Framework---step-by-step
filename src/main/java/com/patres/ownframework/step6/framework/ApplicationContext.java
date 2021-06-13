@@ -32,8 +32,6 @@ public class ApplicationContext {
         if (!clazz.isInterface()) {
             throw new FrameworkException("Class " + clazz.getName() + " should be an interface");
         }
-
-
         final Class<T> implementation = findImplementationByInterface(clazz);
 
         final Component annotation = implementation.getAnnotation(Component.class);
@@ -44,7 +42,6 @@ public class ApplicationContext {
         if (annotation.scope() == Scope.SINGLETON) {
             return (T) singletonBeans.computeIfAbsent(clazz, it -> createBean(clazz, implementation));
         }
-
         return createBean(clazz, implementation);
     }
 

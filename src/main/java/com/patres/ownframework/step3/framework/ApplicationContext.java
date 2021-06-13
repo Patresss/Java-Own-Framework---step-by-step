@@ -28,28 +28,35 @@ public class ApplicationContext {
         }
 
         final Class<T> implementation = findImplementationByInterface(clazz);
-
         return createBean(implementation);
+    }
+
+    @SuppressWarnings("unchecked")
+    private <T> Class<T> findImplementationByInterface(Class<T> interfaceItem) {
+        final Set<Class<?>> classesWithInterfaces = componentBeans.stream()
+                .filter(componentBean -> List.of(componentBean.getInterfaces()).contains(interfaceItem))
+                .collect(Collectors.toSet());
+
+        if (classesWithInterfaces.size() > 1) {
+            throw new FrameworkException("There are more than 1 implementation: " + interfaceItem.getName());
+        }
+
+        return (Class<T>) classesWithInterfaces.stream()
+                .findFirst()
+                .orElseThrow(() -> new FrameworkException("The is no class with interface: " + interfaceItem));
     }
 
     private <T> T createBean(Class<T> implementation) {
         try {
             final Constructor<T> constructor = findConstructor(implementation);
             final Object[] parameters = findConstructorParameters(constructor);
-            final T bean = constructor.newInstance(parameters);
-            return bean;
+
+            return constructor.newInstance(parameters);
         } catch (FrameworkException e) {
             throw e;
         } catch (Exception e) {
             throw new FrameworkException(e);
         }
-    }
-
-    private <T> Object[] findConstructorParameters(Constructor<T> constructor) {
-        final Class<?>[] parameterTypes = constructor.getParameterTypes();
-        return Arrays.stream(parameterTypes)
-                .map(this::getBean)
-                .toArray(Object[]::new);
     }
 
     @SuppressWarnings("unchecked")
@@ -72,19 +79,11 @@ public class ApplicationContext {
                 .orElseThrow(() -> new FrameworkException("Cannot find contrcutor with annottioan Autowired: " + clazz.getName()));
     }
 
-    @SuppressWarnings("unchecked")
-    private <T> Class<T> findImplementationByInterface(Class<T> interfaceItem) {
-        final Set<Class<?>> classesWithInterfaces = componentBeans.stream()
-                .filter(componentBean -> List.of(componentBean.getInterfaces()).contains(interfaceItem))
-                .collect(Collectors.toSet());
-
-        if (classesWithInterfaces.size() > 1) {
-            throw new FrameworkException("There are more than 1 implementation: " + interfaceItem.getName());
-        }
-
-        return (Class<T>) classesWithInterfaces.stream()
-                .findFirst()
-                .orElseThrow(() -> new FrameworkException("The is no class with interface: " + interfaceItem));
+    private <T> Object[] findConstructorParameters(Constructor<T> constructor) {
+        final Class<?>[] parameterTypes = constructor.getParameterTypes();
+        return Arrays.stream(parameterTypes)
+                .map(this::getBean)
+                .toArray(Object[]::new);
     }
 
 }

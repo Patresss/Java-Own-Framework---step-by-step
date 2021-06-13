@@ -13,11 +13,11 @@ public class Step2bApp {
     private static final Logger logger = LoggerFactory.getLogger(Step2bApp.class);
 
     public static void main(String[] args) {
-        final Enhancer enhancer = new Enhancer();
-        enhancer.setSuperclass(CompanyService.class);
-        enhancer.setCallback(new ProxyMethodInterceptor());
+        /* 1 */ final Enhancer enhancer = new Enhancer();
+        /* 2 */ enhancer.setSuperclass(CompanyService.class);
+        /* 3 */ enhancer.setCallback(new ProxyMethodInterceptor());
 
-        CompanyService companyService = (CompanyService) enhancer.create(new Class[]{CompanyDao.class}, new Object[]{new CompanyDao()});
+        /* 4 */ CompanyService companyService = (CompanyService) enhancer.create(new Class[]{CompanyDao.class}, new Object[]{new CompanyDao()});
         companyService.createCompany(new Company());
     }
 }
