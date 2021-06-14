@@ -544,6 +544,9 @@ Ponieważ instancja `method` dotyczy metody z interfejsu, a `@Transactional` chc
 
 ### Dlaczego adnotacje (np. `@Transactional`) czasami nie działają?
 Aby adnotacje działały, muszą przejść przez proxy. Co oznacza, że metody z konkretną adnotacją musi być publiczna i nie może być wywołana w tym samym beanie. W przypadku CGLib metoda nie może być finalna, ponieważ musi zostać ona nadpisana. 
+
+Poniższy kod nie zadziała (zarówno u nas jak i w Springu), ponieważ metoda `createWithTransaction` jest wywoływana bezpośrednio w tej samej klasie, czyli nie przejdzie przez proxy.
+
 ```java
 @Override
 public void createCompany(Company company) {
@@ -569,7 +572,7 @@ Stworzenie `@Transactional` było jedynie przykładem. Nasz własny framework mo
 public @interface Cacheable {
 }
 ```
-Przykład użycia: Załóżmy, że jeżeli już raz wygenerowaliśmy token dla danej `Comapny`, to możemy użyć go ponownie — bez generowania go jeszcze raz.
+Przykład użycia: Załóżmy, że jeżeli już raz wygenerowaliśmy token dla danej `Company`, to możemy użyć go ponownie — bez generowania go jeszcze raz.
 ```java
 @Override
 @Cacheable
