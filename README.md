@@ -168,7 +168,7 @@ Metoda `newProxyInstance` przyjmuje 3 parametry:
 
 
 ### Obsługa transakcji
-Załóżmy, że chcemy stworzyć proxy, aby pomagał nam w obsłudze transakcji. Bez tego mulilibyśmy za każdym razem otwierać i zatwierdzać transakcję. Aby uniknąć duplikacji kodu, możemy do tego wykorzystać proxy.
+Załóżmy, że chcemy stworzyć proxy, aby pomagał nam w obsłudze transakcji. Bez tego musielibyśmy za każdym razem otwierać i zatwierdzać transakcję. Aby uniknąć duplikacji kodu, możemy do tego wykorzystać proxy.
 
 ```java
 public class ProxyHandler implements InvocationHandler {
