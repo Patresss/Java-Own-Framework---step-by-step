@@ -22,7 +22,7 @@ W repozytorium znajdziecie [pakiety](https://github.com/Patresss/Java-Own-Framew
 * [Zakończenie](#Zakończenie)
 ---
 
-## Krok 1 - Budowa aplikacji bez frameworka [[pakiety](https://github.com/Patresss/Java-Own-Framework---step-by-step/tree/main/src/main/java/com/patres/ownframework/step1)]
+## Krok 1 - Budowa aplikacji bez frameworka [[kod](https://github.com/Patresss/Java-Own-Framework---step-by-step/tree/main/src/main/java/com/patres/ownframework/step1)]
 * Stworzenie szkieletu aplikacji
   * Dao: `CompanyDao` z implementacją `CompanyDaoImpl`
   * Service: `CompanyService` z implementacją `CompanyServiceImpl`
@@ -118,7 +118,7 @@ Consider injecting the bean as one of its interfaces or forcing the use of CGLib
 
 Więcej na ten temat: https://www.programmersought.com/article/87046285018/
 
-## Krok 2a - Dynamic Proxy [[pakiety](https://github.com/Patresss/Java-Own-Framework---step-by-step/tree/main/src/main/java/com/patres/ownframework/step2a)]
+## Krok 2a - Dynamic Proxy [[kod](https://github.com/Patresss/Java-Own-Framework---step-by-step/tree/main/src/main/java/com/patres/ownframework/step2a)]
 W tym projekcie będziemy używać Dynamic Proxy. 
 
 ### Tworzenie `InvocationHandler`
