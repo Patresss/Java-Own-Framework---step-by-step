@@ -6,6 +6,8 @@ Repozytorium zademonstruje krok po kroku, w jaki sposób zbudować własny frame
 Spring jest rozwijany od prawie 20 lat przez setki programistów, więc ledwo zbliżymy się do niego. Jednak repozytorium
 pokaże koncept takiego frameworka i udowodni, że nie kryje się tam żadna magia.
 
+W repozytorium znajdziecie [pakiety](https://github.com/Patresss/Java-Own-Framework---step-by-step/tree/main/src/main/java/com/patres/ownframework) z poszczególnymi krokami, a poniżej jest ich omówienie:
+
 ---
 ## Spis kroków
 * [Krok 1 - Budowa aplikacji bez frameworka](#krok-1---Budowa-aplikacji-bez-frameworka)
@@ -20,7 +22,7 @@ pokaże koncept takiego frameworka i udowodni, że nie kryje się tam żadna mag
 * [Zakończenie](#Zakończenie)
 ---
 
-## Krok 1 - Budowa aplikacji bez frameworka
+## Krok 1 - Budowa aplikacji bez frameworka [[pakiety](https://github.com/Patresss/Java-Own-Framework---step-by-step/tree/main/src/main/java/com/patres/ownframework/step1)]
 * Stworzenie szkieletu aplikacji
   * Dao: `CompanyDao` z implementacją `CompanyDaoImpl`
   * Service: `CompanyService` z implementacją `CompanyServiceImpl`
@@ -116,7 +118,7 @@ Consider injecting the bean as one of its interfaces or forcing the use of CGLib
 
 Więcej na ten temat: https://www.programmersought.com/article/87046285018/
 
-## Krok 2a - Dynamic Proxy
+## Krok 2a - Dynamic Proxy [[pakiety](https://github.com/Patresss/Java-Own-Framework---step-by-step/tree/main/src/main/java/com/patres/ownframework/step2a)]
 W tym projekcie będziemy używać Dynamic Proxy. 
 
 ### Tworzenie `InvocationHandler`
@@ -231,7 +233,7 @@ Gotowe — proxy, które obsługuje transakcje już działa!
 2021-06-13 16:45:39,645 [main] DEBUG         ProxyHandler:36 		 - COMMIT TRANSACTION
 ```
 
-## Krok 2b - CGLib
+## Krok 2b - CGLib [[pakiety](https://github.com/Patresss/Java-Own-Framework---step-by-step/tree/main/src/main/java/com/patres/ownframework/step2b)]
 Jak już wspomniałem, w tym projekcie będziemy używać Dynamic Proxy. Jednak przedstawię tworzenie proxy przy pomocy CGLib w ramach ciekawostki.
 
 ### Tworzenie `MethodInterceptor`
@@ -317,7 +319,7 @@ Aby uruchomić CGLib w Java 16, musimy dodać JVM option - `--illegal-access=per
 
 ---
 
-## Krok 3 - Application Context
+## Krok 3 - Application Context [[kod](https://github.com/Patresss/Java-Own-Framework---step-by-step/tree/main/src/main/java/com/patres/ownframework/step3)]
 Wiemy już jak działa proxy, więc czas na wstrzykiwanie zależności. Co chcemy osiągnąć? Application Context, który pozwoli nam na pobieranie beanów przy pomocy interfejsów. 
 ```java
 public class Step3App {
@@ -472,7 +474,7 @@ private <T> Object[] findConstructorParameters(Constructor<T> constructor) {
 
 ```
 
-## Krok 4 - Tworzenie proxy w `ApplicationContext`
+## Krok 4 - Tworzenie proxy w `ApplicationContext` [[kod](https://github.com/Patresss/Java-Own-Framework---step-by-step/tree/main/src/main/java/com/patres/ownframework/step4)]
 Jak już pewnie zauważyłeś, w `ApplicationContext` nie tworzymy żadnego proxy. Dlatego teraz czas połączyć krok 3 i 4:
 
 ### Proxy
@@ -563,7 +565,7 @@ public void createWithTransaction(Company company) {
 }
 ```
 
-## Krok 5 - Implementacja innych adnotacji
+## Krok 5 - Implementacja innych adnotacji [[kod](https://github.com/Patresss/Java-Own-Framework---step-by-step/tree/main/src/main/java/com/patres/ownframework/step5)]
 Stworzenie `@Transactional` było jedynie przykładem. Nasz własny framework może mieć wiele innych użytecznych adnotacji. Dlatego w tym kroku postaramy się zaimplementować adnotację `@Cacheable`.
 
 ```java
@@ -634,7 +636,7 @@ private Object calculateResult(Method method, Object[] args) throws IllegalAcces
 Gotowe — adnotacja `@Cacheable` została zaimplementowana!
 
 
-## Krok 6 - Scope
+## Krok 6 - Scope [[kod](https://github.com/Patresss/Java-Own-Framework---step-by-step/tree/main/src/main/java/com/patres/ownframework/step6)]
 Gdy implementowaliśmy `ProxyHandler` to za każdym razem, gdy wywoływaliśmy metodę `getBean` tworzyliśmy nowy bean. Jednak wzorem Springa zaimplementujemy jeszcze jeden Scope - `SINGLETON` i uczynimy go domyślnym.
 
 ```java
@@ -680,7 +682,7 @@ public <T> T getBean(Class<T> clazz) {
 }
 ```
 
-## Krok 7 - Refactoring 
+## Krok 7 - Refactoring [[kod](https://github.com/Patresss/Java-Own-Framework---step-by-step/tree/main/src/main/java/com/patres/ownframework/step7)]
 Nasz framework został zaimplementowany. Możemy go teraz zrefactoryzować. Do `ProxyHandler` dodaliśmy `@Cacheable` i zrobił się bałagan. Przenieśmy metody związane z transakcjami i cache do osobnych klas:
 ```java
 public abstract class AbstractProxyHandler {
