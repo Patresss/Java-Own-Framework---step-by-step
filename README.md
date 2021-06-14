@@ -10,16 +10,16 @@ W repozytorium znajdziecie [pakiety](https://github.com/Patresss/Java-Own-Framew
 
 ---
 ## Spis kroków
-* [Krok 1 - Budowa aplikacji bez frameworka](#krok-1---Budowa-aplikacji-bez-frameworka)
+* [Krok 1 - Budowa aplikacji bez frameworka](#krok-1---budowa-aplikacji-bez-frameworka-kod)
 * [Krok 2 (teoria) - JDK Dynamic Proxy (a) vs CGLib (b)](#krok-2-teoria---jdk-dynamic-proxy-a-vs-cglib-b)
-* [Krok 2a - Dynamic Proxy](#Krok-2a---Dynamic-Proxy)
-* [Krok 2b - CGLib](#Krok-2b---CGLib)
-* [Krok 3 - Application Context](#Krok-3---Application-Context)
-* [Krok 4 - Tworzenie proxy w `ApplicationContext`](#krok-4---tworzenie-proxy-w-applicationcontext)
-* [Krok 5 - Implementacja innych adnotacji](#Krok-5---Implementacja-innych-adnotacji)
-* [Krok 6 - Scope](#Krok-6---Scope)
-* [Krok 7 - Refactoring](#Krok-7---Refactoring)
-* [Zakończenie](#Zakończenie)
+* [Krok 2a - Dynamic Proxy](#krok-2a---dynamic-proxy-kod)
+* [Krok 2b - CGLib](#krok-2b---cglib-kod)
+* [Krok 3 - Application Context](#krok-3---application-context-kod)
+* [Krok 4 - Tworzenie proxy w `ApplicationContext`](#krok-4---tworzenie-proxy-w-applicationcontext-kod)
+* [Krok 5 - Implementacja innych adnotacji](#krok-5---implementacja-innych-adnotacji-kod)
+* [Krok 6 - Scope](#krok-6---scope-kod)
+* [Krok 7 - Refactoring](#krok-7---refactoring-kod)
+* [Zakończenie](#zakończenie)
 ---
 
 ## Krok 1 - Budowa aplikacji bez frameworka [[kod](https://github.com/Patresss/Java-Own-Framework---step-by-step/tree/main/src/main/java/com/patres/ownframework/step1)]
@@ -233,7 +233,7 @@ Gotowe — proxy, które obsługuje transakcje już działa!
 2021-06-13 16:45:39,645 [main] DEBUG         ProxyHandler:36 		 - COMMIT TRANSACTION
 ```
 
-## Krok 2b - CGLib [[pakiety](https://github.com/Patresss/Java-Own-Framework---step-by-step/tree/main/src/main/java/com/patres/ownframework/step2b)]
+## Krok 2b - CGLib [[kod](https://github.com/Patresss/Java-Own-Framework---step-by-step/tree/main/src/main/java/com/patres/ownframework/step2b)]
 Jak już wspomniałem, w tym projekcie będziemy używać Dynamic Proxy. Jednak przedstawię tworzenie proxy przy pomocy CGLib w ramach ciekawostki.
 
 ### Tworzenie `MethodInterceptor`
