@@ -744,33 +744,20 @@ public class TransactionalHandler extends AbstractProxyHandler {
 
 public class CacheableHandler extends AbstractProxyHandler {
 
-  private static final Logger logger = LoggerFactory.getLogger(CacheableHandler.class);
+    private final Map<List<Object>, Object> cacheContainers = new ConcurrentHashMap<>();
 
-  private final Map<List<Object>, Object> cacheContainers = new HashMap<>();
-
-  public CacheableHandler(final Object objectToHandle) {
-    super(objectToHandle, Cacheable.class);
-  }
-
-  public List<Object> createKeyCache(final Method method, final Object[] args) {
-    return List.of(method, Arrays.asList(args));
-  }
-
-  public Optional<Object> takeResultIfExist(final Method method, Object[] args) {
-    final List<Object> keyCache = createKeyCache(method, args);
-    if (cacheContainers.containsKey(keyCache)) {
-      final Object result = cacheContainers.get(keyCache);
-      logger.debug("Taking result from the cache | key: {}, value: {}", keyCache, result);
-      return Optional.ofNullable(result);
+    public CacheableHandler(final Object objectToHandle) {
+        super(objectToHandle, Cacheable.class);
     }
-    return Optional.empty();
-  }
 
-  public void addResultToCache(Method method, Object[] args, Object result) {
-    final List<Object> keyCache = createKeyCache(method, args);
-    logger.debug("Adding result to the cache | key: {}, value: {}", keyCache, result);
-    cacheContainers.put(keyCache, result);
-  }
+    public List<Object> createKeyCache(final Method method, final Object[] args) {
+        return List.of(method, Arrays.asList(args));
+    }
+
+    public Object takeResultOrCalculate(final Method method, Object[] args, final Supplier<Object> resultSupplier) {
+        final List<Object> keyCache = createKeyCache(method, args);
+        return cacheContainers.computeIfAbsent(keyCache, key -> resultSupplier.get());
+    }
 
 }
 ```
@@ -792,32 +779,28 @@ public class ProxyInvocationHandler implements InvocationHandler {
     @Override
     public Object invoke(final Object proxy, final Method method, final Object[] args) {
         if (cacheHandler.isSupported(method)) {
-            final Optional<Object> cachedResult = cacheHandler.takeResultIfExist(method, args);
-            if (cachedResult.isPresent()) {
-                return cachedResult.get();
-            }
+            return cacheHandler.takeResultOrCalculate(method, args, () -> calculateResult(method, args));
         }
-
-        if (transactionHandler.isSupported(method)) {
-            return transactionHandler.executeWithTransaction(() -> calculateResult(method, args));
-        }
-
         return calculateResult(method, args);
     }
 
     private Object calculateResult(final Method method, final Object[] args) {
+        if (transactionHandler.isSupported(method)) {
+            return transactionHandler.executeWithTransaction(() -> invokeMethod(method, args));
+        }
+        return invokeMethod(method, args);
+    }
+
+    private Object invokeMethod(final Method method, final Object[] args) {
         try {
-            final Object result = method.invoke(objectToHandle, args);
-            if (cacheHandler.isSupported(method)) {
-                cacheHandler.addResultToCache(method, args, result);
-            }
-            return result;
+            return method.invoke(objectToHandle, args);
         } catch (IllegalAccessException | InvocationTargetException e) {
             throw new FrameworkException(e);
         }
     }
 
 }
+
 ```
 
 ## Zakończenie
