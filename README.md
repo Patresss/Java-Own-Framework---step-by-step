@@ -461,7 +461,7 @@ private <T> Constructor<T> findConstructor(Class<T> clazz) {
 
   return constructorsWithAnnotation.stream()
           .findFirst()
-          .orElseThrow(() -> new FrameworkException("Cannot find contrcutor with annottioan Autowired: " + clazz.getName()));
+          .orElseThrow(() -> new FrameworkException("Cannot find constructor with annotation Autowired: " + clazz.getName()));
 }
 
 /* 6 */

@@ -75,7 +75,7 @@ public class ApplicationContext {
 
         return constructorsWithAnnotation.stream()
                 .findFirst()
-                .orElseThrow(() -> new FrameworkException("Cannot find contrcutor with annottioan Autowired: " + clazz.getName()));
+                .orElseThrow(() -> new FrameworkException("Cannot find constructor with annotation Autowired: " + clazz.getName()));
     }
 
     @SuppressWarnings("unchecked")
