@@ -19,7 +19,7 @@ public class Step7App {
         logger.info("===============================");
 
 
-        logger.info("========== Catchable ==========");
+        logger.info("========== Cacheable ==========");
         final Company company1 = new Company();
         logger.info(companyServiceProxy.generateToken(company1));
         logger.info(companyServiceProxy.generateToken(company1));
