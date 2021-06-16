@@ -1,26 +1,28 @@
 # Java Own Framework - krok po kroku
 
-Celem tego repozytorium jest pokazanie, w jaki sposób działa dependency injection framework np. Spring.
+Celem tego projektu jest pokazanie, w jaki sposób działa dependency injection framework np. Spring.
 
-Projekt zademonstruje krok po kroku, w jaki sposób zbudować własny framework. Oczywiście jest to tylko uproszczona forma.
+Repozytorium zademonstruje krok po kroku, w jaki sposób zbudować własny framework. Oczywiście jest to tylko uproszczona forma.
 Spring jest rozwijany od prawie 20 lat przez setki programistów, więc ledwo zbliżymy się do niego. Jednak repozytorium
 pokaże koncept takiego frameworka i udowodni, że nie kryje się tam żadna magia.
 
+W repozytorium znajdziecie [pakiety](https://github.com/Patresss/Java-Own-Framework---step-by-step/tree/main/src/main/java/com/patres/ownframework) z poszczególnymi krokami, a poniżej jest ich omówienie:
+
 ---
 ## Spis kroków
-* [Krok 1 - Budowa aplikacji bez frameworka](#krok-1---Budowa-aplikacji-bez-frameworka)
-* [Krok 2 (teoria) - JDK Dynamic Proxy (a) vs CGLib (b)](#Krok-2-(teoria)---JDK-Dynamic-Proxy-(a)-vs-CGLib-(b))
-* [Krok 2a - Dynamic Proxy](#Krok-2a---Dynamic-Proxy)
-* [Krok 2b - CGLib](#Krok-2b---CGLib)
-* [Krok 3 - Application Context](#Krok-3---Application-Context)
-* [Krok 4 - Tworzenie proxy w `ApplicationContext`](#Krok-4---Tworzenie-proxy-w-`ApplicationContext`)
-* [Krok 5 - Implementacja innych adnotacji](#Krok-5---Implementacja-innych-adnotacji)
-* [Krok 6 - Scope](#Krok-6---Scope)
-* [Krok 7 - Refactoring](#Krok-7---Refactoring)
-* [Zakończenie](#Zakończenie)
+* [Krok 1 - Budowa aplikacji bez frameworka](#krok-1---budowa-aplikacji-bez-frameworka-kod)
+* [Krok 2 (teoria) - JDK Dynamic Proxy (a) vs CGLib (b)](#krok-2-teoria---jdk-dynamic-proxy-a-vs-cglib-b)
+* [Krok 2a - Dynamic Proxy](#krok-2a---dynamic-proxy-kod)
+* [Krok 2b - CGLib](#krok-2b---cglib-kod)
+* [Krok 3 - Application Context](#krok-3---application-context-kod)
+* [Krok 4 - Tworzenie proxy w `ApplicationContext`](#krok-4---tworzenie-proxy-w-applicationcontext-kod)
+* [Krok 5 - Implementacja innych adnotacji](#krok-5---implementacja-innych-adnotacji-kod)
+* [Krok 6 - Scope](#krok-6---scope-kod)
+* [Krok 7 - Refactoring](#krok-7---refactoring-kod)
+* [Zakończenie](#zakończenie)
 ---
 
-## Krok 1 - Budowa aplikacji bez frameworka
+## Krok 1 - Budowa aplikacji bez frameworka [[kod](https://github.com/Patresss/Java-Own-Framework---step-by-step/tree/main/src/main/java/com/patres/ownframework/step1)]
 * Stworzenie szkieletu aplikacji
   * Dao: `CompanyDao` z implementacją `CompanyDaoImpl`
   * Service: `CompanyService` z implementacją `CompanyServiceImpl`
@@ -74,18 +76,15 @@ doSmthAfter();
 * Tworzenie instancji oraz wywoływanie metod przy użyciu Dynamic Proxy jest szybsze od CGLib.
 * Tworzy klasy `MyClass$$EnhancerBySpringCGLIB`.
 
-![Żródło: https://www.baeldung.com/spring-aop-vs-aspectj](https://github.com/Patresss/Java-Own-Framework---step-by-step/blob/master/images/springaop-process.png)
-
+![](https://github.com/Patresss/Java-Own-Framework---step-by-step/blob/main/images/springaop-process.png)
+Żródło: https://www.baeldung.com/spring-aop-vs-aspectj
 
 ### Domyślny typ
-W Springu możemy spotkać proxy: 
-* Dynamic Proxy
-* CGLib Proxy 
-Domyślnym typem jest Dynamic Proxy.
+Domyślnym typem w Springu jest Dynamic Proxy.
 
-https://docs.spring.io/spring-framework/docs/5.3.x/reference/html/core.html#aop-introduction-proxies
-![](https://github.com/Patresss/Java-Own-Framework---step-by-step/blob/master/images/Default%20type%20-%20Spring%20doc.JPG)
 
+![](https://github.com/Patresss/Java-Own-Framework---step-by-step/blob/main/images/Default%20type%20-%20Spring%20doc.JPG)
+Żródło: https://docs.spring.io/spring-framework/docs/5.3.x/reference/html/core.html#aop-introduction-proxies
 
 Jednak gdy stworzymy nową aplikację w Spring Initializr to możemy się zdziwić. Pomimo tego, że dodamy interfejs to w debugu zobaczymy klasę stworzoną przez CGLib `X$$EnhancerBySpringCGLIB`
 
@@ -119,7 +118,7 @@ Consider injecting the bean as one of its interfaces or forcing the use of CGLib
 
 Więcej na ten temat: https://www.programmersought.com/article/87046285018/
 
-## Krok 2a - Dynamic Proxy
+## Krok 2a - Dynamic Proxy [[kod](https://github.com/Patresss/Java-Own-Framework---step-by-step/tree/main/src/main/java/com/patres/ownframework/step2a)]
 W tym projekcie będziemy używać Dynamic Proxy. 
 
 ### Tworzenie `InvocationHandler`
@@ -171,7 +170,7 @@ Metoda `newProxyInstance` przyjmuje 3 parametry:
 
 
 ### Obsługa transakcji
-Załóżmy, że chcemy stworzyć proxy, aby pomagał nam w obsłudze transakcji. Bez tego mulilibyśmy za każdym razem otwierać i zatwierdzać transakcję. Aby uniknąć duplikacji kodu, możemy do tego wykorzystać proxy.
+Załóżmy, że chcemy stworzyć proxy, aby pomagał nam w obsłudze transakcji. Bez tego musielibyśmy za każdym razem otwierać i zatwierdzać transakcję. Aby uniknąć duplikacji kodu, możemy do tego wykorzystać proxy.
 
 ```java
 public class ProxyHandler implements InvocationHandler {
@@ -234,7 +233,7 @@ Gotowe — proxy, które obsługuje transakcje już działa!
 2021-06-13 16:45:39,645 [main] DEBUG         ProxyHandler:36 		 - COMMIT TRANSACTION
 ```
 
-## Krok 2b - CGLib
+## Krok 2b - CGLib [[kod](https://github.com/Patresss/Java-Own-Framework---step-by-step/tree/main/src/main/java/com/patres/ownframework/step2b)]
 Jak już wspomniałem, w tym projekcie będziemy używać Dynamic Proxy. Jednak przedstawię tworzenie proxy przy pomocy CGLib w ramach ciekawostki.
 
 ### Tworzenie `MethodInterceptor`
@@ -316,11 +315,11 @@ public class Step2bApp {
 ---
 **Zwróć uwagę**
 
-Aby uruchomić CGLib w Java 16, musimy dodać JVM option - `--illegal-access=permit`
-https://github.com/cglib/cglib/issues/191
+Aby uruchomić CGLib w Java 16, musimy dodać JVM option - `--illegal-access=permit` - https://github.com/cglib/cglib/issues/191
+
 ---
 
-## Krok 3 - Application Context
+## Krok 3 - Application Context [[kod](https://github.com/Patresss/Java-Own-Framework---step-by-step/tree/main/src/main/java/com/patres/ownframework/step3)]
 Wiemy już jak działa proxy, więc czas na wstrzykiwanie zależności. Co chcemy osiągnąć? Application Context, który pozwoli nam na pobieranie beanów przy pomocy interfejsów. 
 ```java
 public class Step3App {
@@ -386,13 +385,13 @@ public ApplicationContext(Package packageContext) {
 }
 ```
 
-[1] Nasz context będzie posiadał jedną publiczną metodę do wyciągania beana. 
-[2] Założyliśmy, że w przyszłości będziemy tworzyć proxy za pomocą Dynamic Proxy, dlatego ten argument będzie musiał być interfejsem. 
-[3] Aby utworzyć instancję, musimy najpierw poszukać odpowiedniej implementacji. Podobnie jak w przypadku Springa, nie możemy posiadać więcej niż jedną implementację interfejsu, ponieważ framework nie wiedziałby, której miałby użyć (`NoUniqueBeanDefinitionException` - bez `@Qualifier`.
-[4] Znając implementację, możemy brać się za tworzenie nowej instancji.
-[5] Pierwszym krokiem, będzie poszukanie konstruktora. Podobnie jak w przypadku Springa: jeżeli mamy tylko jeden konstruktor to sprawa jest prosta. W przypadku gdy tych konstruktorów mamy więcej, szukamy tego z adnotacją `@Autowired`.
-[6] Jednak sam konstruktor to nie wszystko. Teraz musimy poszukać jego argumentów. A tymi argumentami są pozostałe beany, które należy pobrać z [1] używając rekurencji.
-[7] Mając odpowiedni konstruktor i parametry możemy w końcu stworzyć nową instancję.
+* [1] Nasz context będzie posiadał jedną publiczną metodę do wyciągania beana. 
+* [2] Założyliśmy, że w przyszłości będziemy tworzyć proxy za pomocą Dynamic Proxy, dlatego ten argument będzie musiał być interfejsem. 
+* [3] Aby utworzyć instancję, musimy najpierw poszukać odpowiedniej implementacji. Podobnie jak w przypadku Springa, nie możemy posiadać więcej niż jedną implementację interfejsu, ponieważ framework nie wiedziałby, której miałby użyć (`NoUniqueBeanDefinitionException` - bez `@Qualifier`.
+* [4] Znając implementację, możemy brać się za tworzenie nowej instancji.
+* [5] Pierwszym krokiem, będzie poszukanie konstruktora. Podobnie jak w przypadku Springa: jeżeli mamy tylko jeden konstruktor to sprawa jest prosta. W przypadku gdy tych konstruktorów mamy więcej, szukamy tego z adnotacją `@Autowired`.
+* [6] Jednak sam konstruktor to nie wszystko. Teraz musimy poszukać jego argumentów. A tymi argumentami są pozostałe beany, które należy pobrać z [1] używając rekurencji.
+* [7] Mając odpowiedni konstruktor i parametry możemy w końcu stworzyć nową instancję.
 
 ```java
 
@@ -475,7 +474,7 @@ private <T> Object[] findConstructorParameters(Constructor<T> constructor) {
 
 ```
 
-## Krok 4 - Tworzenie proxy w `ApplicationContext`
+## Krok 4 - Tworzenie proxy w `ApplicationContext` [[kod](https://github.com/Patresss/Java-Own-Framework---step-by-step/tree/main/src/main/java/com/patres/ownframework/step4)]
 Jak już pewnie zauważyłeś, w `ApplicationContext` nie tworzymy żadnego proxy. Dlatego teraz czas połączyć krok 3 i 4:
 
 ### Proxy
@@ -547,6 +546,9 @@ Ponieważ instancja `method` dotyczy metody z interfejsu, a `@Transactional` chc
 
 ### Dlaczego adnotacje (np. `@Transactional`) czasami nie działają?
 Aby adnotacje działały, muszą przejść przez proxy. Co oznacza, że metody z konkretną adnotacją musi być publiczna i nie może być wywołana w tym samym beanie. W przypadku CGLib metoda nie może być finalna, ponieważ musi zostać ona nadpisana. 
+
+Poniższy kod nie zadziała (zarówno u nas jak i w Springu), ponieważ metoda `createWithTransaction` jest wywoływana bezpośrednio w tej samej klasie, czyli nie przejdzie przez proxy.
+
 ```java
 @Override
 public void createCompany(Company company) {
@@ -563,7 +565,7 @@ public void createWithTransaction(Company company) {
 }
 ```
 
-## Krok 5 - Implementacja innych adnotacji
+## Krok 5 - Implementacja innych adnotacji [[kod](https://github.com/Patresss/Java-Own-Framework---step-by-step/tree/main/src/main/java/com/patres/ownframework/step5)]
 Stworzenie `@Transactional` było jedynie przykładem. Nasz własny framework może mieć wiele innych użytecznych adnotacji. Dlatego w tym kroku postaramy się zaimplementować adnotację `@Cacheable`.
 
 ```java
@@ -572,7 +574,7 @@ Stworzenie `@Transactional` było jedynie przykładem. Nasz własny framework mo
 public @interface Cacheable {
 }
 ```
-Przykład użycia: Załóżmy, że jeżeli już raz wygenerowaliśmy token dla danej `Comapny`, to możemy użyć go ponownie — bez generowania go jeszcze raz.
+Przykład użycia: Załóżmy, że jeżeli już raz wygenerowaliśmy token dla danej `Company`, to możemy użyć go ponownie — bez generowania go jeszcze raz.
 ```java
 @Override
 @Cacheable
@@ -634,7 +636,7 @@ private Object calculateResult(Method method, Object[] args) throws IllegalAcces
 Gotowe — adnotacja `@Cacheable` została zaimplementowana!
 
 
-## Krok 6 - Scope
+## Krok 6 - Scope [[kod](https://github.com/Patresss/Java-Own-Framework---step-by-step/tree/main/src/main/java/com/patres/ownframework/step6)]
 Gdy implementowaliśmy `ProxyHandler` to za każdym razem, gdy wywoływaliśmy metodę `getBean` tworzyliśmy nowy bean. Jednak wzorem Springa zaimplementujemy jeszcze jeden Scope - `SINGLETON` i uczynimy go domyślnym.
 
 ```java
@@ -680,7 +682,7 @@ public <T> T getBean(Class<T> clazz) {
 }
 ```
 
-## Krok 7 - Refactoring 
+## Krok 7 - Refactoring [[kod](https://github.com/Patresss/Java-Own-Framework---step-by-step/tree/main/src/main/java/com/patres/ownframework/step7)]
 Nasz framework został zaimplementowany. Możemy go teraz zrefactoryzować. Do `ProxyHandler` dodaliśmy `@Cacheable` i zrobił się bałagan. Przenieśmy metody związane z transakcjami i cache do osobnych klas:
 ```java
 public abstract class AbstractProxyHandler {
