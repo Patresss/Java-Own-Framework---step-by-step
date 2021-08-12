@@ -16,11 +16,11 @@ In the repository you will find [packages](https://github.com/Patresss/Java-Own-
 * [Step 2a - Dynamic Proxy](#step-2a---dynamic-proxy-code)
 * [Step 2b - CGLib](#step-2b---cglib-code)
 * [Step 3 - Application Context](#step-3---application-context-code)
-* [Step 4 - Create proxy in `ApplicationContext`](#step-4---create-proxy-in-applicationcontext-code)
+* [Step 4 - Create proxy in `ApplicationContext`](#step-4---create-a-proxy-in-applicationcontext-code)
 * [Step 5 - Implement other annotations](#step-5---implement-other-annotations-code)
 * [Step 6 - Scope](#step-6---scope-code)
 * [Step 7 - Refactoring](#step-7---refactoring-code)
-* [Finish](#finish)
+* [Summary](#summary)
 
 ---
 ## Step 1 - Building an application without a framework [[code](https://github.com/Patresss/Java-Own-Framework---step-by-step/tree/main/src/main/java/com/patres/ownframework/step1)] 
