@@ -31,9 +31,9 @@ public class ProxyHandler implements InvocationHandler {
             if (result != null) {
                 return result;
             }
-            if (isTransactional(method)) {
-                return handleTransaction(method, args);
-            }
+        }
+        if (isTransactional(method)) {
+            return handleTransaction(method, args);
         }
         return calculateResult(method, args);
     }
