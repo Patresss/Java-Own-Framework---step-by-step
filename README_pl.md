@@ -614,9 +614,9 @@ public Object invoke(Object proxy, Method method, Object[] args) throws Throwabl
         if (result != null) {
             return result;
         }
-        if (isTransactional(method)) {
-            return handleTransaction(method, args);
-        }
+    }
+    if (isTransactional(method)) {
+        return handleTransaction(method, args);
     }
     return calculateResult(method, args);
 }
