@@ -74,7 +74,7 @@ doSmthAfter();
 ### CGLib
 * CGLib is an external library.
 * It is based on class extensions, so the proxy will not work on final methods.
-* Creating instances and calling methods using Dynamic Proxy is faster than CGLib.
+* Creating instances and calling methods using CGLib is faster than Dynamic Proxy.
 * It creates `MyClass$$EnhancerBySpringCGLIB` classes.
 
 ![](https://github.com/Patresss/Java-Own-Framework---step-by-step/blob/main/images/springaop-process.png)
