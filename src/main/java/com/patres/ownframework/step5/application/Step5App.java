@@ -12,7 +12,7 @@ public class Step5App {
 
     public static void main(String[] args) {
 
-        final ApplicationContext applicationContext = new ApplicationContext(Step5App.class.getPackage());
+        final ApplicationContext applicationContext = new ApplicationContext(Step5App.class);
         final CompanyService companyServiceProxy = applicationContext.getBean(CompanyService.class);
 
         final Company company1 = new Company();

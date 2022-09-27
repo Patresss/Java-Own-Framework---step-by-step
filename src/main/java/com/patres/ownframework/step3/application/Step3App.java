@@ -7,7 +7,7 @@ import com.patres.ownframework.step3.framework.ApplicationContext;
 public class Step3App {
 
     public static void main(String[] args) {
-        final ApplicationContext applicationContext = new ApplicationContext(Step3App.class.getPackage());
+        final ApplicationContext applicationContext = new ApplicationContext(Step3App.class);
         final CompanyService companyServiceProxy = applicationContext.getBean(CompanyService.class);
 
         companyServiceProxy.createCompany(new Company());

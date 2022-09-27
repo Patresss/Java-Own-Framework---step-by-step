@@ -12,7 +12,7 @@ public class Step4App {
 
     public static void main(String[] args) {
 
-        final ApplicationContext applicationContext = new ApplicationContext(Step4App.class.getPackage());
+        final ApplicationContext applicationContext = new ApplicationContext(Step4App.class);
         final CompanyService companyServiceProxy = applicationContext.getBean(CompanyService.class);
 
         companyServiceProxy.createCompany(new Company());

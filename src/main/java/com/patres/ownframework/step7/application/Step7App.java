@@ -11,7 +11,7 @@ public class Step7App {
     private static final Logger logger = LoggerFactory.getLogger(Step7App.class);
 
     public static void main(String[] args) {
-        final ApplicationContext applicationContext = new ApplicationContext(Step7App.class.getPackage());
+        final ApplicationContext applicationContext = new ApplicationContext(Step7App.class);
         final CompanyService companyServiceProxy = applicationContext.getBean(CompanyService.class);
 
         logger.info("======== Transactional ========");

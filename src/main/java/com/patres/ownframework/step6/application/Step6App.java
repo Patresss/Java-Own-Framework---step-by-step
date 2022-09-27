@@ -11,7 +11,7 @@ public class Step6App {
 
     public static void main(String[] args) {
 
-        final ApplicationContext applicationContext = new ApplicationContext(Step6App.class.getPackage());
+        final ApplicationContext applicationContext = new ApplicationContext(Step6App.class);
         final CompanyService companyServiceProxy1 = applicationContext.getBean(CompanyService.class);
         final CompanyService companyServiceProxy2 = applicationContext.getBean(CompanyService.class);
 

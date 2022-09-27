@@ -334,7 +334,7 @@ We already know how the proxy works, so it is time to inject dependencies. What 
 public class Step3App {
 
     public static void main(String[] args) {
-        final ApplicationContext applicationContext = new ApplicationContext(Step3App.class.getPackage());
+        final ApplicationContext applicationContext = new ApplicationContext(Step3App.class);
         final CompanyService companyServiceProxy = applicationContext.getBean(CompanyService.class);
 
         companyServiceProxy.createCompany(new Company());
@@ -386,8 +386,8 @@ For this purpose we can use the library `reflections`.
 ```java
 private final Set<Class<?>> componentBeans;
 
-public ApplicationContext(Package packageContext) {
-    final Reflections reflections = new Reflections(packageContext.getName());
+public ApplicationContext(Class<?> applicationClass) {
+    final Reflections reflections = new Reflections(applicationClass.getPackage().getName());
     this.componentBeans = reflections.getTypesAnnotatedWith(Component.class).stream()
             .filter(clazz -> !clazz.isInterface())
             .collect(Collectors.toSet());

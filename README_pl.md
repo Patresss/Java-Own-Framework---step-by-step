@@ -325,7 +325,7 @@ Wiemy już jak działa proxy, więc czas na wstrzykiwanie zależności. Co chcem
 public class Step3App {
 
     public static void main(String[] args) {
-        final ApplicationContext applicationContext = new ApplicationContext(Step3App.class.getPackage());
+        final ApplicationContext applicationContext = new ApplicationContext(Step3App.class);
         final CompanyService companyServiceProxy = applicationContext.getBean(CompanyService.class);
 
         companyServiceProxy.createCompany(new Company());
@@ -377,8 +377,8 @@ W tym celu możemy użyć bibliotekę `reflections`
 ```java
 private final Set<Class<?>> componentBeans;
 
-public ApplicationContext(Package packageContext) {
-    final Reflections reflections = new Reflections(packageContext.getName());
+public ApplicationContext(Class<?> applicationClass) {
+    final Reflections reflections = new Reflections(applicationClass.getPackage().getName());
     this.componentBeans = reflections.getTypesAnnotatedWith(Component.class).stream()
             .filter(clazz -> !clazz.isInterface())
             .collect(Collectors.toSet());

@@ -16,8 +16,8 @@ public class ApplicationContext {
 
     private final Set<Class<?>> componentBeans;
 
-    public ApplicationContext(Package packageContext) {
-        final Reflections reflections = new Reflections(packageContext.getName());
+    public ApplicationContext(Class<?> applicationClass) {
+        final Reflections reflections = new Reflections(applicationClass.getPackage().getName());
         this.componentBeans = reflections.getTypesAnnotatedWith(Component.class).stream()
                 .filter(clazz -> !clazz.isInterface())
                 .collect(Collectors.toSet());
