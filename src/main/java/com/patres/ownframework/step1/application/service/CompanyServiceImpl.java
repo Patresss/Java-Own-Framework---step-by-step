@@ -27,6 +27,7 @@ public class CompanyServiceImpl implements CompanyService {
             commitTransaction();
         } catch (Exception e) {
             rollbackTransaction();
+            throw e;
         }
     }
 
@@ -42,6 +43,7 @@ public class CompanyServiceImpl implements CompanyService {
             commitTransaction();
         } catch (Exception e) {
             rollbackTransaction();
+            throw e;
         }
     }
 
