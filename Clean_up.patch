@@ -1,0 +1,2778 @@
+Index: src/main/java/com/patres/ownframework/step2a/application/dao/CompanyDao.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step2a/application/dao/CompanyDao.java b/src/main/java/com/patres/ownframework/step2a/application/dao/CompanyDao.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step2a/application/dao/CompanyDao.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,10 +0,0 @@
+-package com.patres.ownframework.step2a.application.dao;
+-
+-import com.patres.ownframework.step2a.application.model.Company;
+-
+-public interface CompanyDao {
+-
+-    void createCompany(Company company);
+-
+-    void updateCompany(Company company);
+-}
+Index: src/main/java/com/patres/ownframework/step2a/application/dao/CompanyDaoImpl.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step2a/application/dao/CompanyDaoImpl.java b/src/main/java/com/patres/ownframework/step2a/application/dao/CompanyDaoImpl.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step2a/application/dao/CompanyDaoImpl.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,24 +0,0 @@
+-package com.patres.ownframework.step2a.application.dao;
+-
+-import com.patres.ownframework.step2a.application.model.Company;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+-
+-public class CompanyDaoImpl implements CompanyDao {
+-
+-    private static final Logger logger = LoggerFactory.getLogger(CompanyDaoImpl.class);
+-
+-    @Override
+-    public void createCompany(Company company) {
+-        logger.info("DAO:   START - create company");
+-
+-        logger.info("DAO:   END - create company");
+-    }
+-
+-    @Override
+-    public void updateCompany(Company company) {
+-        logger.info("DAO:   START - update company");
+-
+-        logger.info("DAO:   END - update company");
+-    }
+-}
+Index: src/main/java/com/patres/ownframework/step2a/application/model/Company.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step2a/application/model/Company.java b/src/main/java/com/patres/ownframework/step2a/application/model/Company.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step2a/application/model/Company.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,4 +0,0 @@
+-package com.patres.ownframework.step2a.application.model;
+-
+-public class Company {
+-}
+Index: src/main/java/com/patres/ownframework/step2a/application/service/CompanyService.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step2a/application/service/CompanyService.java b/src/main/java/com/patres/ownframework/step2a/application/service/CompanyService.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step2a/application/service/CompanyService.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,10 +0,0 @@
+-package com.patres.ownframework.step2a.application.service;
+-
+-import com.patres.ownframework.step2a.application.model.Company;
+-
+-public interface CompanyService {
+-
+-    void createCompany(Company company);
+-
+-    void updateCompany(Company company);
+-}
+Index: src/main/java/com/patres/ownframework/step2a/application/service/CompanyServiceImpl.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step2a/application/service/CompanyServiceImpl.java b/src/main/java/com/patres/ownframework/step2a/application/service/CompanyServiceImpl.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step2a/application/service/CompanyServiceImpl.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,31 +0,0 @@
+-package com.patres.ownframework.step2a.application.service;
+-
+-import com.patres.ownframework.step2a.application.dao.CompanyDao;
+-import com.patres.ownframework.step2a.application.model.Company;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+-
+-public class CompanyServiceImpl implements CompanyService {
+-
+-    private static final Logger logger = LoggerFactory.getLogger(CompanyServiceImpl.class);
+-
+-    private final CompanyDao companyDao;
+-
+-    public CompanyServiceImpl(CompanyDao companyDao) {
+-        this.companyDao = companyDao;
+-    }
+-
+-    @Override
+-    public void createCompany(Company company) {
+-        logger.info("SERVICE:   START - create company");
+-        companyDao.createCompany(company);
+-        logger.info("SERVICE:   END - create company");
+-    }
+-
+-    @Override
+-    public void updateCompany(Company company) {
+-        logger.info("SERVICE:   START - update company");
+-        companyDao.createCompany(company);
+-        logger.info("SERVICE:   END - update company");
+-    }
+-}
+Index: src/main/java/com/patres/ownframework/step2a/application/Step2aApp.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step2a/application/Step2aApp.java b/src/main/java/com/patres/ownframework/step2a/application/Step2aApp.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step2a/application/Step2aApp.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,25 +0,0 @@
+-package com.patres.ownframework.step2a.application;
+-
+-import com.patres.ownframework.step2a.application.dao.CompanyDao;
+-import com.patres.ownframework.step2a.application.dao.CompanyDaoImpl;
+-import com.patres.ownframework.step2a.application.model.Company;
+-import com.patres.ownframework.step2a.application.service.CompanyService;
+-import com.patres.ownframework.step2a.application.service.CompanyServiceImpl;
+-import com.patres.ownframework.step2a.framework.ProxyHandler;
+-
+-import java.lang.reflect.Proxy;
+-
+-public class Step2aApp {
+-
+-    public static void main(String[] args) {
+-        final CompanyDao companyDao = new CompanyDaoImpl();
+-
+-        final CompanyService companyServiceProxy = (CompanyService) Proxy.newProxyInstance(
+-                Step2aApp.class.getClassLoader(),
+-                new Class[]{CompanyService.class},
+-                new ProxyHandler(new CompanyServiceImpl(companyDao))
+-        );
+-
+-        companyServiceProxy.createCompany(new Company());
+-    }
+-}
+Index: src/main/java/com/patres/ownframework/step2a/framework/ProxyHandler.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step2a/framework/ProxyHandler.java b/src/main/java/com/patres/ownframework/step2a/framework/ProxyHandler.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step2a/framework/ProxyHandler.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,43 +0,0 @@
+-package com.patres.ownframework.step2a.framework;
+-
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+-
+-import java.lang.reflect.InvocationHandler;
+-import java.lang.reflect.Method;
+-
+-public class ProxyHandler implements InvocationHandler {
+-
+-    private static final Logger logger = LoggerFactory.getLogger(ProxyHandler.class);
+-    private final Object objectToHandle;
+-
+-    public ProxyHandler(Object objectToHandle) {
+-        this.objectToHandle = objectToHandle;
+-    }
+-
+-    @Override
+-    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+-        try {
+-            beginTransaction();
+-            final Object invoke = method.invoke(objectToHandle, args);
+-            commitTransaction();
+-            return invoke;
+-        } catch (Exception e) {
+-            rollbackTransaction();
+-            throw e;
+-        }
+-    }
+-
+-    private void beginTransaction() {
+-        logger.debug("BEGIN TRANSACTION");
+-    }
+-
+-    private void commitTransaction() {
+-        logger.debug("COMMIT TRANSACTION");
+-    }
+-
+-    private void rollbackTransaction() {
+-        logger.error("ROLLBACK TRANSACTION");
+-    }
+-
+-}
+Index: src/main/java/com/patres/ownframework/step2b/application/dao/CompanyDao.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step2b/application/dao/CompanyDao.java b/src/main/java/com/patres/ownframework/step2b/application/dao/CompanyDao.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step2b/application/dao/CompanyDao.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,22 +0,0 @@
+-package com.patres.ownframework.step2b.application.dao;
+-
+-import com.patres.ownframework.step2b.application.model.Company;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+-
+-public class CompanyDao {
+-
+-    private static final Logger logger = LoggerFactory.getLogger(CompanyDao.class);
+-
+-    public void createCompany(Company company) {
+-        logger.info("DAO:   START - create company");
+-
+-        logger.info("DAO:   END - create company");
+-    }
+-
+-    public void updateCompany(Company company) {
+-        logger.info("DAO:   START - update company");
+-
+-        logger.info("DAO:   END - update company");
+-    }
+-}
+Index: src/main/java/com/patres/ownframework/step2b/application/model/Company.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step2b/application/model/Company.java b/src/main/java/com/patres/ownframework/step2b/application/model/Company.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step2b/application/model/Company.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,4 +0,0 @@
+-package com.patres.ownframework.step2b.application.model;
+-
+-public class Company {
+-}
+Index: src/main/java/com/patres/ownframework/step2b/application/service/CompanyService.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step2b/application/service/CompanyService.java b/src/main/java/com/patres/ownframework/step2b/application/service/CompanyService.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step2b/application/service/CompanyService.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,29 +0,0 @@
+-package com.patres.ownframework.step2b.application.service;
+-
+-import com.patres.ownframework.step2b.application.dao.CompanyDao;
+-import com.patres.ownframework.step2b.application.model.Company;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+-
+-public class CompanyService {
+-
+-    private static final Logger logger = LoggerFactory.getLogger(CompanyService.class);
+-
+-    private final CompanyDao companyDao;
+-
+-    public CompanyService(CompanyDao companyDao) {
+-        this.companyDao = companyDao;
+-    }
+-
+-    public void createCompany(Company company) {
+-        logger.info("SERVICE:   START - create company");
+-        companyDao.createCompany(company);
+-        logger.info("SERVICE:   END - create company");
+-    }
+-
+-    public void updateCompany(Company company) {
+-        logger.info("SERVICE:   START - update company");
+-        companyDao.createCompany(company);
+-        logger.info("SERVICE:   END - update company");
+-    }
+-}
+Index: src/main/java/com/patres/ownframework/step2b/application/Step2bApp.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step2b/application/Step2bApp.java b/src/main/java/com/patres/ownframework/step2b/application/Step2bApp.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step2b/application/Step2bApp.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,19 +0,0 @@
+-package com.patres.ownframework.step2b.application;
+-
+-import com.patres.ownframework.step2b.application.dao.CompanyDao;
+-import com.patres.ownframework.step2b.application.model.Company;
+-import com.patres.ownframework.step2b.application.service.CompanyService;
+-import com.patres.ownframework.step2b.framework.ProxyMethodInterceptor;
+-import net.sf.cglib.proxy.Enhancer;
+-
+-public class Step2bApp {
+-
+-    public static void main(String[] args) {
+-        final Enhancer enhancer = new Enhancer();
+-        enhancer.setSuperclass(CompanyService.class);
+-        enhancer.setCallback(new ProxyMethodInterceptor());
+-
+-        CompanyService companyService = (CompanyService) enhancer.create(new Class[]{CompanyDao.class}, new Object[]{new CompanyDao()});
+-        companyService.createCompany(new Company());
+-    }
+-}
+\ No newline at end of file
+Index: src/main/java/com/patres/ownframework/step2b/framework/ProxyMethodInterceptor.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step2b/framework/ProxyMethodInterceptor.java b/src/main/java/com/patres/ownframework/step2b/framework/ProxyMethodInterceptor.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step2b/framework/ProxyMethodInterceptor.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,39 +0,0 @@
+-package com.patres.ownframework.step2b.framework;
+-
+-import net.sf.cglib.proxy.MethodInterceptor;
+-import net.sf.cglib.proxy.MethodProxy;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+-
+-import java.lang.reflect.Method;
+-
+-public class ProxyMethodInterceptor implements MethodInterceptor {
+-
+-    private static final Logger logger = LoggerFactory.getLogger(ProxyMethodInterceptor.class);
+-
+-    @Override
+-    public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
+-        try {
+-            beginTransaction();
+-            final Object invoke = proxy.invokeSuper(obj, args);
+-            commitTransaction();
+-            return invoke;
+-        } catch (Exception e) {
+-            rollbackTransaction();
+-            throw e;
+-        }
+-    }
+-
+-    private void beginTransaction() {
+-        logger.debug("BEGIN TRANSACTION");
+-    }
+-
+-    private void commitTransaction() {
+-        logger.debug("COMMIT TRANSACTION");
+-    }
+-
+-    private void rollbackTransaction() {
+-        logger.error("ROLLBACK TRANSACTION");
+-    }
+-    
+-}
+Index: src/main/java/com/patres/ownframework/step3/application/dao/CompanyDao.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step3/application/dao/CompanyDao.java b/src/main/java/com/patres/ownframework/step3/application/dao/CompanyDao.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step3/application/dao/CompanyDao.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,10 +0,0 @@
+-package com.patres.ownframework.step3.application.dao;
+-
+-import com.patres.ownframework.step3.application.model.Company;
+-
+-public interface CompanyDao {
+-
+-    void createCompany(Company company);
+-
+-    void updateCompany(Company company);
+-}
+Index: src/main/java/com/patres/ownframework/step3/application/dao/CompanyDaoImpl.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step3/application/dao/CompanyDaoImpl.java b/src/main/java/com/patres/ownframework/step3/application/dao/CompanyDaoImpl.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step3/application/dao/CompanyDaoImpl.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,26 +0,0 @@
+-package com.patres.ownframework.step3.application.dao;
+-
+-import com.patres.ownframework.step3.application.model.Company;
+-import com.patres.ownframework.step3.framework.annotation.Component;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+-
+-@Component
+-public class CompanyDaoImpl implements CompanyDao {
+-
+-    private static final Logger logger = LoggerFactory.getLogger(CompanyDaoImpl.class);
+-
+-    @Override
+-    public void createCompany(Company company) {
+-        logger.info("DAO:   START - create company");
+-
+-        logger.info("DAO:   END - create company");
+-    }
+-
+-    @Override
+-    public void updateCompany(Company company) {
+-        logger.info("DAO:   START - update company");
+-
+-        logger.info("DAO:   END - update company");
+-    }
+-}
+Index: src/main/java/com/patres/ownframework/step3/application/model/Company.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step3/application/model/Company.java b/src/main/java/com/patres/ownframework/step3/application/model/Company.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step3/application/model/Company.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,4 +0,0 @@
+-package com.patres.ownframework.step3.application.model;
+-
+-public class Company {
+-}
+Index: src/main/java/com/patres/ownframework/step3/application/service/CompanyService.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step3/application/service/CompanyService.java b/src/main/java/com/patres/ownframework/step3/application/service/CompanyService.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step3/application/service/CompanyService.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,10 +0,0 @@
+-package com.patres.ownframework.step3.application.service;
+-
+-import com.patres.ownframework.step3.application.model.Company;
+-
+-public interface CompanyService {
+-
+-    void createCompany(Company company);
+-
+-    void updateCompany(Company company);
+-}
+Index: src/main/java/com/patres/ownframework/step3/application/service/CompanyServiceImpl.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step3/application/service/CompanyServiceImpl.java b/src/main/java/com/patres/ownframework/step3/application/service/CompanyServiceImpl.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step3/application/service/CompanyServiceImpl.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,35 +0,0 @@
+-package com.patres.ownframework.step3.application.service;
+-
+-import com.patres.ownframework.step3.application.dao.CompanyDao;
+-import com.patres.ownframework.step3.application.model.Company;
+-import com.patres.ownframework.step3.framework.annotation.Autowired;
+-import com.patres.ownframework.step3.framework.annotation.Component;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+-
+-@Component
+-public class CompanyServiceImpl implements CompanyService {
+-
+-    private static final Logger logger = LoggerFactory.getLogger(CompanyServiceImpl.class);
+-
+-    private final CompanyDao companyDao;
+-
+-    @Autowired
+-    public CompanyServiceImpl(CompanyDao companyDao) {
+-        this.companyDao = companyDao;
+-    }
+-
+-    @Override
+-    public void createCompany(Company company) {
+-        logger.info("SERVICE:   START - create company");
+-        companyDao.createCompany(company);
+-        logger.info("SERVICE:   END - create company");
+-    }
+-
+-    @Override
+-    public void updateCompany(Company company) {
+-        logger.info("SERVICE:   START - update company");
+-        companyDao.createCompany(company);
+-        logger.info("SERVICE:   END - update company");
+-    }
+-}
+Index: src/main/java/com/patres/ownframework/step3/application/Step3App.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step3/application/Step3App.java b/src/main/java/com/patres/ownframework/step3/application/Step3App.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step3/application/Step3App.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,15 +0,0 @@
+-package com.patres.ownframework.step3.application;
+-
+-import com.patres.ownframework.step3.application.model.Company;
+-import com.patres.ownframework.step3.application.service.CompanyService;
+-import com.patres.ownframework.step3.framework.ApplicationContext;
+-
+-public class Step3App {
+-
+-    public static void main(String[] args) {
+-        final ApplicationContext applicationContext = new ApplicationContext(Step3App.class);
+-        final CompanyService companyServiceProxy = applicationContext.getBean(CompanyService.class);
+-
+-        companyServiceProxy.createCompany(new Company());
+-    }
+-}
+Index: src/main/java/com/patres/ownframework/step3/framework/annotation/Autowired.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step3/framework/annotation/Autowired.java b/src/main/java/com/patres/ownframework/step3/framework/annotation/Autowired.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step3/framework/annotation/Autowired.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,11 +0,0 @@
+-package com.patres.ownframework.step3.framework.annotation;
+-
+-import java.lang.annotation.ElementType;
+-import java.lang.annotation.Retention;
+-import java.lang.annotation.RetentionPolicy;
+-import java.lang.annotation.Target;
+-
+-@Target(value = ElementType.CONSTRUCTOR)
+-@Retention(RetentionPolicy.RUNTIME)
+-public @interface Autowired {
+-}
+Index: src/main/java/com/patres/ownframework/step3/framework/annotation/Component.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step3/framework/annotation/Component.java b/src/main/java/com/patres/ownframework/step3/framework/annotation/Component.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step3/framework/annotation/Component.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,11 +0,0 @@
+-package com.patres.ownframework.step3.framework.annotation;
+-
+-import java.lang.annotation.ElementType;
+-import java.lang.annotation.Retention;
+-import java.lang.annotation.RetentionPolicy;
+-import java.lang.annotation.Target;
+-
+-@Target(ElementType.TYPE)
+-@Retention(RetentionPolicy.RUNTIME)
+-public @interface Component {
+-}
+\ No newline at end of file
+Index: src/main/java/com/patres/ownframework/step3/framework/exception/FrameworkException.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step3/framework/exception/FrameworkException.java b/src/main/java/com/patres/ownframework/step3/framework/exception/FrameworkException.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step3/framework/exception/FrameworkException.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,13 +0,0 @@
+-package com.patres.ownframework.step3.framework.exception;
+-
+-public class FrameworkException extends RuntimeException {
+-
+-    public FrameworkException(String message) {
+-        super(message);
+-    }
+-
+-    public FrameworkException(Throwable throwable) {
+-        super("Unknown exception", throwable);
+-    }
+-
+-}
+Index: src/main/java/com/patres/ownframework/step3/framework/ApplicationContext.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step3/framework/ApplicationContext.java b/src/main/java/com/patres/ownframework/step3/framework/ApplicationContext.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step3/framework/ApplicationContext.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,89 +0,0 @@
+-package com.patres.ownframework.step3.framework;
+-
+-import com.patres.ownframework.step3.framework.annotation.Autowired;
+-import com.patres.ownframework.step3.framework.annotation.Component;
+-import com.patres.ownframework.step3.framework.exception.FrameworkException;
+-import org.reflections.Reflections;
+-
+-import java.lang.reflect.Constructor;
+-import java.util.Arrays;
+-import java.util.List;
+-import java.util.Set;
+-import java.util.stream.Collectors;
+-
+-public class ApplicationContext {
+-
+-    private final Set<Class<?>> componentBeans;
+-
+-    public ApplicationContext(Class<?> applicationClass) {
+-        final Reflections reflections = new Reflections(applicationClass.getPackage().getName());
+-        this.componentBeans = reflections.getTypesAnnotatedWith(Component.class).stream()
+-                .filter(clazz -> !clazz.isInterface())
+-                .collect(Collectors.toSet());
+-    }
+-
+-    public <T> T getBean(Class<T> clazz) {
+-        if (!clazz.isInterface()) {
+-            throw new FrameworkException("Class " + clazz.getName() + " should be an interface");
+-        }
+-
+-        final Class<T> implementation = findImplementationByInterface(clazz);
+-        return createBean(implementation);
+-    }
+-
+-    @SuppressWarnings("unchecked")
+-    private <T> Class<T> findImplementationByInterface(Class<T> interfaceItem) {
+-        final Set<Class<?>> classesWithInterfaces = componentBeans.stream()
+-                .filter(componentBean -> List.of(componentBean.getInterfaces()).contains(interfaceItem))
+-                .collect(Collectors.toSet());
+-
+-        if (classesWithInterfaces.size() > 1) {
+-            throw new FrameworkException("There are more than 1 implementation: " + interfaceItem.getName());
+-        }
+-
+-        return (Class<T>) classesWithInterfaces.stream()
+-                .findFirst()
+-                .orElseThrow(() -> new FrameworkException("The is no class with interface: " + interfaceItem));
+-    }
+-
+-    private <T> T createBean(Class<T> implementation) {
+-        try {
+-            final Constructor<T> constructor = findConstructor(implementation);
+-            final Object[] parameters = findConstructorParameters(constructor);
+-
+-            return constructor.newInstance(parameters);
+-        } catch (FrameworkException e) {
+-            throw e;
+-        } catch (Exception e) {
+-            throw new FrameworkException(e);
+-        }
+-    }
+-
+-    @SuppressWarnings("unchecked")
+-    private <T> Constructor<T> findConstructor(Class<T> clazz) {
+-        final Constructor<T>[] constructors = (Constructor<T>[]) clazz.getConstructors();
+-        if (constructors.length == 1) {
+-            return constructors[0];
+-        }
+-
+-        final Set<Constructor<T>> constructorsWithAnnotation = Arrays.stream(constructors)
+-                .filter(constructor -> constructor.isAnnotationPresent(Autowired.class))
+-                .collect(Collectors.toSet());
+-
+-        if (constructorsWithAnnotation.size() > 1) {
+-            throw new FrameworkException("There are more than 1 constructor with Autowired annotation: " + clazz.getName());
+-        }
+-
+-        return constructorsWithAnnotation.stream()
+-                .findFirst()
+-                .orElseThrow(() -> new FrameworkException("Cannot find constructor with annotation Autowired: " + clazz.getName()));
+-    }
+-
+-    private <T> Object[] findConstructorParameters(Constructor<T> constructor) {
+-        final Class<?>[] parameterTypes = constructor.getParameterTypes();
+-        return Arrays.stream(parameterTypes)
+-                .map(this::getBean)
+-                .toArray(Object[]::new);
+-    }
+-
+-}
+Index: src/main/java/com/patres/ownframework/step3/framework/ProxyHandler.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step3/framework/ProxyHandler.java b/src/main/java/com/patres/ownframework/step3/framework/ProxyHandler.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step3/framework/ProxyHandler.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,43 +0,0 @@
+-package com.patres.ownframework.step3.framework;
+-
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+-
+-import java.lang.reflect.InvocationHandler;
+-import java.lang.reflect.Method;
+-
+-public class ProxyHandler implements InvocationHandler {
+-
+-    private static final Logger logger = LoggerFactory.getLogger(ProxyHandler.class);
+-    private final Object objectToHandle;
+-
+-    public ProxyHandler(Object objectToHandle) {
+-        this.objectToHandle = objectToHandle;
+-    }
+-
+-    @Override
+-    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+-        try {
+-            beginTransaction();
+-            final Object invoke = method.invoke(objectToHandle, args);
+-            commitTransaction();
+-            return invoke;
+-        } catch (Exception e) {
+-            rollbackTransaction();
+-            throw e;
+-        }
+-    }
+-
+-    private void beginTransaction() {
+-        logger.debug("BEGIN TRANSACTION");
+-    }
+-
+-    private void commitTransaction() {
+-        logger.debug("COMMIT TRANSACTION");
+-    }
+-
+-    private void rollbackTransaction() {
+-        logger.error("ROLLBACK TRANSACTION");
+-    }
+-
+-}
+Index: src/main/java/com/patres/ownframework/step4/application/dao/CompanyDao.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step4/application/dao/CompanyDao.java b/src/main/java/com/patres/ownframework/step4/application/dao/CompanyDao.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step4/application/dao/CompanyDao.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,10 +0,0 @@
+-package com.patres.ownframework.step4.application.dao;
+-
+-import com.patres.ownframework.step4.application.model.Company;
+-
+-public interface CompanyDao {
+-
+-    void createCompany(Company company);
+-
+-    void updateCompany(Company company);
+-}
+Index: src/main/java/com/patres/ownframework/step4/application/dao/CompanyDaoImpl.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step4/application/dao/CompanyDaoImpl.java b/src/main/java/com/patres/ownframework/step4/application/dao/CompanyDaoImpl.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step4/application/dao/CompanyDaoImpl.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,28 +0,0 @@
+-package com.patres.ownframework.step4.application.dao;
+-
+-import com.patres.ownframework.step4.application.model.Company;
+-import com.patres.ownframework.step4.framework.annotation.Component;
+-import com.patres.ownframework.step4.framework.annotation.Transactional;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+-
+-@Component
+-public class CompanyDaoImpl implements CompanyDao {
+-
+-    private static final Logger logger = LoggerFactory.getLogger(CompanyDaoImpl.class);
+-
+-    @Override
+-    @Transactional
+-    public void createCompany(Company company) {
+-        logger.info("DAO:   START - create company");
+-
+-        logger.info("DAO:   END - create company");
+-    }
+-
+-    @Override
+-    public void updateCompany(Company company) {
+-        logger.info("DAO:   START - update company");
+-
+-        logger.info("DAO:   END - update company");
+-    }
+-}
+Index: src/main/java/com/patres/ownframework/step4/application/model/Company.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step4/application/model/Company.java b/src/main/java/com/patres/ownframework/step4/application/model/Company.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step4/application/model/Company.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,4 +0,0 @@
+-package com.patres.ownframework.step4.application.model;
+-
+-public class Company {
+-}
+Index: src/main/java/com/patres/ownframework/step4/application/service/CompanyService.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step4/application/service/CompanyService.java b/src/main/java/com/patres/ownframework/step4/application/service/CompanyService.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step4/application/service/CompanyService.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,10 +0,0 @@
+-package com.patres.ownframework.step4.application.service;
+-
+-import com.patres.ownframework.step4.application.model.Company;
+-
+-public interface CompanyService {
+-
+-    void createCompany(Company company);
+-
+-    void updateCompany(Company company);
+-}
+Index: src/main/java/com/patres/ownframework/step4/application/service/CompanyServiceImpl.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step4/application/service/CompanyServiceImpl.java b/src/main/java/com/patres/ownframework/step4/application/service/CompanyServiceImpl.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step4/application/service/CompanyServiceImpl.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,45 +0,0 @@
+-package com.patres.ownframework.step4.application.service;
+-
+-import com.patres.ownframework.step4.application.dao.CompanyDao;
+-import com.patres.ownframework.step4.application.model.Company;
+-import com.patres.ownframework.step4.framework.annotation.Autowired;
+-import com.patres.ownframework.step4.framework.annotation.Component;
+-import com.patres.ownframework.step4.framework.annotation.Transactional;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+-
+-@Component
+-public class CompanyServiceImpl implements CompanyService {
+-
+-    private static final Logger logger = LoggerFactory.getLogger(CompanyServiceImpl.class);
+-
+-    private final CompanyDao companyDao;
+-
+-    @Autowired
+-    public CompanyServiceImpl(CompanyDao companyDao) {
+-        this.companyDao = companyDao;
+-    }
+-
+-    @Override
+-    public void createCompany(Company company) {
+-        logger.info("SERVICE:   START - create company");
+-//         companyDao.createCompany(company);
+-        createWithTransaction(company);
+-        logger.info("SERVICE:   END - create company");
+-    }
+-
+-    @Transactional
+-    public void createWithTransaction(Company company) {
+-        logger.info("SERVICE:   START - createWithTransaction");
+-        companyDao.createCompany(company);
+-        logger.info("SERVICE:   END - createWithTransaction");
+-    }
+-
+-    @Override
+-    @Transactional
+-    public void updateCompany(Company company) {
+-        logger.info("SERVICE:   START - update company");
+-        companyDao.createCompany(company);
+-        logger.info("SERVICE:   END - update company");
+-    }
+-}
+Index: src/main/java/com/patres/ownframework/step4/application/Step4App.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step4/application/Step4App.java b/src/main/java/com/patres/ownframework/step4/application/Step4App.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step4/application/Step4App.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,20 +0,0 @@
+-package com.patres.ownframework.step4.application;
+-
+-import com.patres.ownframework.step4.application.model.Company;
+-import com.patres.ownframework.step4.application.service.CompanyService;
+-import com.patres.ownframework.step4.framework.ApplicationContext;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+-
+-public class Step4App {
+-
+-    private static final Logger logger = LoggerFactory.getLogger(Step4App.class);
+-
+-    public static void main(String[] args) {
+-
+-        final ApplicationContext applicationContext = new ApplicationContext(Step4App.class);
+-        final CompanyService companyServiceProxy = applicationContext.getBean(CompanyService.class);
+-
+-        companyServiceProxy.createCompany(new Company());
+-    }
+-}
+Index: src/main/java/com/patres/ownframework/step4/framework/annotation/Autowired.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step4/framework/annotation/Autowired.java b/src/main/java/com/patres/ownframework/step4/framework/annotation/Autowired.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step4/framework/annotation/Autowired.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,11 +0,0 @@
+-package com.patres.ownframework.step4.framework.annotation;
+-
+-import java.lang.annotation.ElementType;
+-import java.lang.annotation.Retention;
+-import java.lang.annotation.RetentionPolicy;
+-import java.lang.annotation.Target;
+-
+-@Target(value = ElementType.CONSTRUCTOR)
+-@Retention(RetentionPolicy.RUNTIME)
+-public @interface Autowired {
+-}
+Index: src/main/java/com/patres/ownframework/step4/framework/annotation/Component.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step4/framework/annotation/Component.java b/src/main/java/com/patres/ownframework/step4/framework/annotation/Component.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step4/framework/annotation/Component.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,11 +0,0 @@
+-package com.patres.ownframework.step4.framework.annotation;
+-
+-import java.lang.annotation.ElementType;
+-import java.lang.annotation.Retention;
+-import java.lang.annotation.RetentionPolicy;
+-import java.lang.annotation.Target;
+-
+-@Target(ElementType.TYPE)
+-@Retention(RetentionPolicy.RUNTIME)
+-public @interface Component {
+-}
+\ No newline at end of file
+Index: src/main/java/com/patres/ownframework/step4/framework/annotation/Transactional.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step4/framework/annotation/Transactional.java b/src/main/java/com/patres/ownframework/step4/framework/annotation/Transactional.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step4/framework/annotation/Transactional.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,11 +0,0 @@
+-package com.patres.ownframework.step4.framework.annotation;
+-
+-import java.lang.annotation.ElementType;
+-import java.lang.annotation.Retention;
+-import java.lang.annotation.RetentionPolicy;
+-import java.lang.annotation.Target;
+-
+-@Target(value = ElementType.METHOD)
+-@Retention(RetentionPolicy.RUNTIME)
+-public @interface Transactional {
+-}
+Index: src/main/java/com/patres/ownframework/step4/framework/exception/FrameworkException.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step4/framework/exception/FrameworkException.java b/src/main/java/com/patres/ownframework/step4/framework/exception/FrameworkException.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step4/framework/exception/FrameworkException.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,13 +0,0 @@
+-package com.patres.ownframework.step4.framework.exception;
+-
+-public class FrameworkException extends RuntimeException {
+-
+-    public FrameworkException(String message) {
+-        super(message);
+-    }
+-
+-    public FrameworkException(Throwable throwable) {
+-        super("Unknown exception", throwable);
+-    }
+-
+-}
+Index: src/main/java/com/patres/ownframework/step4/framework/ApplicationContext.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step4/framework/ApplicationContext.java b/src/main/java/com/patres/ownframework/step4/framework/ApplicationContext.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step4/framework/ApplicationContext.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,96 +0,0 @@
+-package com.patres.ownframework.step4.framework;
+-
+-import com.patres.ownframework.step4.framework.annotation.Autowired;
+-import com.patres.ownframework.step4.framework.annotation.Component;
+-import com.patres.ownframework.step4.framework.exception.FrameworkException;
+-import org.reflections.Reflections;
+-
+-import java.lang.reflect.Constructor;
+-import java.lang.reflect.Proxy;
+-import java.util.Arrays;
+-import java.util.List;
+-import java.util.Set;
+-import java.util.stream.Collectors;
+-
+-public class ApplicationContext {
+-
+-    private final Set<Class<?>> componentBeans;
+-
+-    public ApplicationContext(Class<?> applicationClass) {
+-        final Reflections reflections = new Reflections(applicationClass.getPackage().getName());
+-        this.componentBeans = reflections.getTypesAnnotatedWith(Component.class).stream()
+-                .filter(clazz -> !clazz.isInterface())
+-                .collect(Collectors.toSet());
+-    }
+-
+-    public <T> T getBean(Class<T> clazz) {
+-        if (!clazz.isInterface()) {
+-            throw new FrameworkException("Class " + clazz.getName() + " should be an interface");
+-        }
+-
+-        final Class<T> implementation = findImplementationByInterface(clazz);
+-
+-        return createBean(clazz, implementation);
+-    }
+-
+-    private <T> T createBean(Class<T> clazz, Class<T> implementation) {
+-        try {
+-            final Constructor<T> constructor = findConstructor(implementation);
+-            final Object[] parameters = findConstructorParameters(constructor);
+-            final T bean = constructor.newInstance(parameters);
+-
+-            final Object proxy = Proxy.newProxyInstance(
+-                    ApplicationContext.class.getClassLoader(),
+-                    new Class[]{clazz},
+-                    new ProxyHandler(bean));
+-            return clazz.cast(proxy);
+-        } catch (FrameworkException e) {
+-            throw e;
+-        } catch (Exception e) {
+-            throw new FrameworkException(e);
+-        }
+-    }
+-
+-    private <T> Object[] findConstructorParameters(Constructor<T> constructor) {
+-        final Class<?>[] parameterTypes = constructor.getParameterTypes();
+-        return Arrays.stream(parameterTypes)
+-                .map(this::getBean)
+-                .toArray(Object[]::new);
+-    }
+-
+-    @SuppressWarnings("unchecked")
+-    private <T> Constructor<T> findConstructor(Class<T> clazz) {
+-        final Constructor<T>[] constructors = (Constructor<T>[]) clazz.getConstructors();
+-        if (constructors.length == 1) {
+-            return constructors[0];
+-        }
+-
+-        final Set<Constructor<T>> constructorsWithAnnotation = Arrays.stream(constructors)
+-                .filter(constructor -> constructor.isAnnotationPresent(Autowired.class))
+-                .collect(Collectors.toSet());
+-
+-        if (constructorsWithAnnotation.size() > 1) {
+-            throw new FrameworkException("There are more than 1 constructor with Autowired annotation: " + clazz.getName());
+-        }
+-
+-        return constructorsWithAnnotation.stream()
+-                .findFirst()
+-                .orElseThrow(() -> new FrameworkException("Cannot find constructor with annotation Autowired: " + clazz.getName()));
+-    }
+-
+-    @SuppressWarnings("unchecked")
+-    private <T> Class<T> findImplementationByInterface(Class<T> interfaceItem) {
+-        final Set<Class<?>> classesWithInterfaces = componentBeans.stream()
+-                .filter(componentBean -> List.of(componentBean.getInterfaces()).contains(interfaceItem))
+-                .collect(Collectors.toSet());
+-
+-        if (classesWithInterfaces.size() > 1) {
+-            throw new FrameworkException("There are more than 1 implementation: " + interfaceItem.getName());
+-        }
+-
+-        return (Class<T>) classesWithInterfaces.stream()
+-                .findFirst()
+-                .orElseThrow(() -> new FrameworkException("The is no class with interface: " + interfaceItem));
+-    }
+-
+-}
+Index: src/main/java/com/patres/ownframework/step4/framework/ProxyHandler.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step4/framework/ProxyHandler.java b/src/main/java/com/patres/ownframework/step4/framework/ProxyHandler.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step4/framework/ProxyHandler.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,60 +0,0 @@
+-package com.patres.ownframework.step4.framework;
+-
+-import com.patres.ownframework.step4.framework.annotation.Transactional;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+-
+-import java.lang.reflect.InvocationHandler;
+-import java.lang.reflect.InvocationTargetException;
+-import java.lang.reflect.Method;
+-
+-public class ProxyHandler implements InvocationHandler {
+-
+-    private static final Logger logger = LoggerFactory.getLogger(ProxyHandler.class);
+-    private final Object objectToHandle;
+-
+-    public ProxyHandler(Object objectToHandle) {
+-        this.objectToHandle = objectToHandle;
+-    }
+-
+-    @Override
+-    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+-        if (isTransactional(method)) {
+-            return handleTransaction(method, args);
+-        }
+-        return method.invoke(objectToHandle, args);
+-    }
+-
+-    private Object handleTransaction(Method method, Object[] args) throws IllegalAccessException, InvocationTargetException {
+-        try {
+-            beginTransaction();
+-            final Object invoke = method.invoke(objectToHandle, args);
+-            commitTransaction();
+-            return invoke;
+-        } catch (Exception e) {
+-            rollbackTransaction();
+-            throw e;
+-        }
+-    }
+-
+-    private boolean isTransactional(Method method) {
+-        try {
+-            return objectToHandle.getClass().getMethod(method.getName(), method.getParameterTypes()).isAnnotationPresent(Transactional.class);
+-        } catch (NoSuchMethodException e) {
+-            return false;
+-        }
+-    }
+-
+-    private void beginTransaction() {
+-        logger.debug("BEGIN TRANSACTION");
+-    }
+-
+-    private void commitTransaction() {
+-        logger.debug("COMMIT TRANSACTION");
+-    }
+-
+-    private void rollbackTransaction() {
+-        logger.error("ROLLBACK TRANSACTION");
+-    }
+-
+-}
+Index: src/main/java/com/patres/ownframework/step5/application/dao/CompanyDao.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step5/application/dao/CompanyDao.java b/src/main/java/com/patres/ownframework/step5/application/dao/CompanyDao.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step5/application/dao/CompanyDao.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,10 +0,0 @@
+-package com.patres.ownframework.step5.application.dao;
+-
+-import com.patres.ownframework.step5.application.model.Company;
+-
+-public interface CompanyDao {
+-
+-    void createCompany(Company company);
+-
+-    void updateCompany(Company company);
+-}
+Index: src/main/java/com/patres/ownframework/step5/application/dao/CompanyDaoImpl.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step5/application/dao/CompanyDaoImpl.java b/src/main/java/com/patres/ownframework/step5/application/dao/CompanyDaoImpl.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step5/application/dao/CompanyDaoImpl.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,28 +0,0 @@
+-package com.patres.ownframework.step5.application.dao;
+-
+-import com.patres.ownframework.step5.application.model.Company;
+-import com.patres.ownframework.step5.framework.annotation.Component;
+-import com.patres.ownframework.step5.framework.annotation.Transactional;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+-
+-@Component
+-public class CompanyDaoImpl implements CompanyDao {
+-
+-    private static final Logger logger = LoggerFactory.getLogger(CompanyDaoImpl.class);
+-
+-    @Override
+-    @Transactional
+-    public void createCompany(Company company) {
+-        logger.info("DAO:   START - create company");
+-
+-        logger.info("DAO:   END - create company");
+-    }
+-
+-    @Override
+-    public void updateCompany(Company company) {
+-        logger.info("DAO:   START - update company");
+-
+-        logger.info("DAO:   END - update company");
+-    }
+-}
+Index: src/main/java/com/patres/ownframework/step5/application/model/Company.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step5/application/model/Company.java b/src/main/java/com/patres/ownframework/step5/application/model/Company.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step5/application/model/Company.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,4 +0,0 @@
+-package com.patres.ownframework.step5.application.model;
+-
+-public class Company {
+-}
+Index: src/main/java/com/patres/ownframework/step5/application/service/CompanyService.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step5/application/service/CompanyService.java b/src/main/java/com/patres/ownframework/step5/application/service/CompanyService.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step5/application/service/CompanyService.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,12 +0,0 @@
+-package com.patres.ownframework.step5.application.service;
+-
+-import com.patres.ownframework.step5.application.model.Company;
+-
+-public interface CompanyService {
+-
+-    void createCompany(Company company);
+-
+-    String generateToken(Company company);
+-
+-    void updateCompany(Company company);
+-}
+Index: src/main/java/com/patres/ownframework/step5/application/service/CompanyServiceImpl.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step5/application/service/CompanyServiceImpl.java b/src/main/java/com/patres/ownframework/step5/application/service/CompanyServiceImpl.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step5/application/service/CompanyServiceImpl.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,54 +0,0 @@
+-package com.patres.ownframework.step5.application.service;
+-
+-import com.patres.ownframework.step5.application.dao.CompanyDao;
+-import com.patres.ownframework.step5.application.model.Company;
+-import com.patres.ownframework.step5.framework.annotation.Autowired;
+-import com.patres.ownframework.step5.framework.annotation.Cacheable;
+-import com.patres.ownframework.step5.framework.annotation.Component;
+-import com.patres.ownframework.step5.framework.annotation.Transactional;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+-
+-import java.util.UUID;
+-
+-@Component
+-public class CompanyServiceImpl implements CompanyService {
+-
+-    private static final Logger logger = LoggerFactory.getLogger(CompanyServiceImpl.class);
+-
+-    private final CompanyDao companyDao;
+-
+-    @Autowired
+-    public CompanyServiceImpl(CompanyDao companyDao) {
+-        this.companyDao = companyDao;
+-    }
+-
+-    @Override
+-    public void createCompany(Company company) {
+-        logger.info("SERVICE:   START - create company");
+-//         companyDao.createCompany(company);
+-        createWithTransaction(company);
+-        logger.info("SERVICE:   END - create company");
+-    }
+-
+-    @Override
+-    @Cacheable
+-    public String generateToken(Company company) {
+-        return UUID.randomUUID().toString();
+-    }
+-
+-    @Transactional
+-    public void createWithTransaction(Company company) {
+-        logger.info("SERVICE:   START - createWithTransaction");
+-        companyDao.createCompany(company);
+-        logger.info("SERVICE:   END - createWithTransaction");
+-    }
+-
+-    @Override
+-    @Transactional
+-    public void updateCompany(Company company) {
+-        logger.info("SERVICE:   START - update company");
+-        companyDao.createCompany(company);
+-        logger.info("SERVICE:   END - update company");
+-    }
+-}
+Index: src/main/java/com/patres/ownframework/step5/application/Step5App.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step5/application/Step5App.java b/src/main/java/com/patres/ownframework/step5/application/Step5App.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step5/application/Step5App.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,25 +0,0 @@
+-package com.patres.ownframework.step5.application;
+-
+-import com.patres.ownframework.step5.application.model.Company;
+-import com.patres.ownframework.step5.application.service.CompanyService;
+-import com.patres.ownframework.step5.framework.ApplicationContext;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+-
+-public class Step5App {
+-
+-    private static final Logger logger = LoggerFactory.getLogger(Step5App.class);
+-
+-    public static void main(String[] args) {
+-
+-        final ApplicationContext applicationContext = new ApplicationContext(Step5App.class);
+-        final CompanyService companyServiceProxy = applicationContext.getBean(CompanyService.class);
+-
+-        final Company company1 = new Company();
+-        logger.info(companyServiceProxy.generateToken(company1));
+-        logger.info(companyServiceProxy.generateToken(company1));
+-
+-        final Company company2 = new Company();
+-        logger.info(companyServiceProxy.generateToken(company2));
+-    }
+-}
+Index: src/main/java/com/patres/ownframework/step5/framework/annotation/Autowired.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step5/framework/annotation/Autowired.java b/src/main/java/com/patres/ownframework/step5/framework/annotation/Autowired.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step5/framework/annotation/Autowired.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,11 +0,0 @@
+-package com.patres.ownframework.step5.framework.annotation;
+-
+-import java.lang.annotation.ElementType;
+-import java.lang.annotation.Retention;
+-import java.lang.annotation.RetentionPolicy;
+-import java.lang.annotation.Target;
+-
+-@Target(value = ElementType.CONSTRUCTOR)
+-@Retention(RetentionPolicy.RUNTIME)
+-public @interface Autowired {
+-}
+Index: src/main/java/com/patres/ownframework/step5/framework/annotation/Cacheable.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step5/framework/annotation/Cacheable.java b/src/main/java/com/patres/ownframework/step5/framework/annotation/Cacheable.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step5/framework/annotation/Cacheable.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,11 +0,0 @@
+-package com.patres.ownframework.step5.framework.annotation;
+-
+-import java.lang.annotation.ElementType;
+-import java.lang.annotation.Retention;
+-import java.lang.annotation.RetentionPolicy;
+-import java.lang.annotation.Target;
+-
+-@Target(value = ElementType.METHOD)
+-@Retention(RetentionPolicy.RUNTIME)
+-public @interface Cacheable {
+-}
+Index: src/main/java/com/patres/ownframework/step5/framework/annotation/Component.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step5/framework/annotation/Component.java b/src/main/java/com/patres/ownframework/step5/framework/annotation/Component.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step5/framework/annotation/Component.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,11 +0,0 @@
+-package com.patres.ownframework.step5.framework.annotation;
+-
+-import java.lang.annotation.ElementType;
+-import java.lang.annotation.Retention;
+-import java.lang.annotation.RetentionPolicy;
+-import java.lang.annotation.Target;
+-
+-@Target(ElementType.TYPE)
+-@Retention(RetentionPolicy.RUNTIME)
+-public @interface Component {
+-}
+\ No newline at end of file
+Index: src/main/java/com/patres/ownframework/step5/framework/annotation/Transactional.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step5/framework/annotation/Transactional.java b/src/main/java/com/patres/ownframework/step5/framework/annotation/Transactional.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step5/framework/annotation/Transactional.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,11 +0,0 @@
+-package com.patres.ownframework.step5.framework.annotation;
+-
+-import java.lang.annotation.ElementType;
+-import java.lang.annotation.Retention;
+-import java.lang.annotation.RetentionPolicy;
+-import java.lang.annotation.Target;
+-
+-@Target(value = ElementType.METHOD)
+-@Retention(RetentionPolicy.RUNTIME)
+-public @interface Transactional {
+-}
+Index: src/main/java/com/patres/ownframework/step5/framework/exception/FrameworkException.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step5/framework/exception/FrameworkException.java b/src/main/java/com/patres/ownframework/step5/framework/exception/FrameworkException.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step5/framework/exception/FrameworkException.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,13 +0,0 @@
+-package com.patres.ownframework.step5.framework.exception;
+-
+-public class FrameworkException extends RuntimeException {
+-
+-    public FrameworkException(String message) {
+-        super(message);
+-    }
+-
+-    public FrameworkException(Throwable throwable) {
+-        super("Unknown exception", throwable);
+-    }
+-
+-}
+Index: src/main/java/com/patres/ownframework/step5/framework/ApplicationContext.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step5/framework/ApplicationContext.java b/src/main/java/com/patres/ownframework/step5/framework/ApplicationContext.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step5/framework/ApplicationContext.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,96 +0,0 @@
+-package com.patres.ownframework.step5.framework;
+-
+-import com.patres.ownframework.step5.framework.annotation.Autowired;
+-import com.patres.ownframework.step5.framework.annotation.Component;
+-import com.patres.ownframework.step5.framework.exception.FrameworkException;
+-import org.reflections.Reflections;
+-
+-import java.lang.reflect.Constructor;
+-import java.lang.reflect.Proxy;
+-import java.util.Arrays;
+-import java.util.List;
+-import java.util.Set;
+-import java.util.stream.Collectors;
+-
+-public class ApplicationContext {
+-
+-    private final Set<Class<?>> componentBeans;
+-
+-    public ApplicationContext(Class<?> applicationClass) {
+-        final Reflections reflections = new Reflections(applicationClass.getPackage().getName());
+-        this.componentBeans = reflections.getTypesAnnotatedWith(Component.class).stream()
+-                .filter(clazz -> !clazz.isInterface())
+-                .collect(Collectors.toSet());
+-    }
+-
+-    public <T> T getBean(Class<T> clazz) {
+-        if (!clazz.isInterface()) {
+-            throw new FrameworkException("Class " + clazz.getName() + " should be an interface");
+-        }
+-
+-        final Class<T> implementation = findImplementationByInterface(clazz);
+-
+-        return createBean(clazz, implementation);
+-    }
+-
+-    private <T> T createBean(Class<T> clazz, Class<T> implementation) {
+-        try {
+-            final Constructor<T> constructor = findConstructor(implementation);
+-            final Object[] parameters = findConstructorParameters(constructor);
+-            final T bean = constructor.newInstance(parameters);
+-
+-            final Object proxy = Proxy.newProxyInstance(
+-                    ApplicationContext.class.getClassLoader(),
+-                    new Class[]{clazz},
+-                    new ProxyHandler(bean));
+-            return clazz.cast(proxy);
+-        } catch (FrameworkException e) {
+-            throw e;
+-        } catch (Exception e) {
+-            throw new FrameworkException(e);
+-        }
+-    }
+-
+-    private <T> Object[] findConstructorParameters(Constructor<T> constructor) {
+-        final Class<?>[] parameterTypes = constructor.getParameterTypes();
+-        return Arrays.stream(parameterTypes)
+-                .map(this::getBean)
+-                .toArray(Object[]::new);
+-    }
+-
+-    @SuppressWarnings("unchecked")
+-    private <T> Constructor<T> findConstructor(Class<T> clazz) {
+-        final Constructor<T>[] constructors = (Constructor<T>[]) clazz.getConstructors();
+-        if (constructors.length == 1) {
+-            return constructors[0];
+-        }
+-
+-        final Set<Constructor<T>> constructorsWithAnnotation = Arrays.stream(constructors)
+-                .filter(constructor -> constructor.isAnnotationPresent(Autowired.class))
+-                .collect(Collectors.toSet());
+-
+-        if (constructorsWithAnnotation.size() > 1) {
+-            throw new FrameworkException("There are more than 1 constructor with Autowired annotation: " + clazz.getName());
+-        }
+-
+-        return constructorsWithAnnotation.stream()
+-                .findFirst()
+-                .orElseThrow(() -> new FrameworkException("Cannot find constructor with annotation Autowired: " + clazz.getName()));
+-    }
+-
+-    @SuppressWarnings("unchecked")
+-    private <T> Class<T> findImplementationByInterface(Class<T> interfaceItem) {
+-        final Set<Class<?>> classesWithInterfaces = componentBeans.stream()
+-                .filter(componentBean -> List.of(componentBean.getInterfaces()).contains(interfaceItem))
+-                .collect(Collectors.toSet());
+-
+-        if (classesWithInterfaces.size() > 1) {
+-            throw new FrameworkException("There are more than 1 implementation: " + interfaceItem.getName());
+-        }
+-
+-        return (Class<T>) classesWithInterfaces.stream()
+-                .findFirst()
+-                .orElseThrow(() -> new FrameworkException("The is no class with interface: " + interfaceItem));
+-    }
+-
+-}
+Index: src/main/java/com/patres/ownframework/step5/framework/ProxyHandler.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step5/framework/ProxyHandler.java b/src/main/java/com/patres/ownframework/step5/framework/ProxyHandler.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step5/framework/ProxyHandler.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,94 +0,0 @@
+-package com.patres.ownframework.step5.framework;
+-
+-import com.patres.ownframework.step5.framework.annotation.Cacheable;
+-import com.patres.ownframework.step5.framework.annotation.Transactional;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+-
+-import java.lang.reflect.InvocationHandler;
+-import java.lang.reflect.InvocationTargetException;
+-import java.lang.reflect.Method;
+-import java.util.Arrays;
+-import java.util.HashMap;
+-import java.util.List;
+-import java.util.Map;
+-
+-public class ProxyHandler implements InvocationHandler {
+-
+-    private static final Logger logger = LoggerFactory.getLogger(ProxyHandler.class);
+-    private final Object objectToHandle;
+-
+-    private final Map<List<Object>, Object> cacheContainer = new HashMap<>();
+-
+-    public ProxyHandler(Object objectToHandle) {
+-        this.objectToHandle = objectToHandle;
+-    }
+-
+-    @Override
+-    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+-        if (isCacheable(method)) {
+-            final Object result = cacheContainer.get(createCacheKey(method, args));
+-            if (result != null) {
+-                return result;
+-            }
+-        }
+-        if (isTransactional(method)) {
+-            return handleTransaction(method, args);
+-        }
+-        return calculateResult(method, args);
+-    }
+-
+-    private Object handleTransaction(Method method, Object[] args) throws IllegalAccessException, InvocationTargetException {
+-        try {
+-            beginTransaction();
+-            final Object invoke = calculateResult(method, args);
+-            commitTransaction();
+-            return invoke;
+-        } catch (Exception e) {
+-            rollbackTransaction();
+-            throw e;
+-        }
+-    }
+-
+-    private Object calculateResult(Method method, Object[] args) throws IllegalAccessException, InvocationTargetException {
+-        final Object result = method.invoke(objectToHandle, args);
+-        if (isCacheable(method)) {
+-            cacheContainer.put(createCacheKey(method, args), result);
+-        }
+-        return result;
+-    }
+-
+-    private boolean isTransactional(Method method) {
+-        try {
+-            return objectToHandle.getClass().getMethod(method.getName(), method.getParameterTypes()).isAnnotationPresent(Transactional.class);
+-        } catch (NoSuchMethodException e) {
+-            return false;
+-        }
+-    }
+-
+-
+-    private boolean isCacheable(Method method) {
+-        try {
+-            return objectToHandle.getClass().getMethod(method.getName(), method.getParameterTypes()).isAnnotationPresent(Cacheable.class);
+-        } catch (NoSuchMethodException e) {
+-            return false;
+-        }
+-    }
+-
+-    private List<Object> createCacheKey(Method method, Object[] args) {
+-        return List.of(method, Arrays.asList(args));
+-    }
+-
+-    private void beginTransaction() {
+-        logger.debug("BEGIN TRANSACTION");
+-    }
+-
+-    private void commitTransaction() {
+-        logger.debug("COMMIT TRANSACTION");
+-    }
+-
+-    private void rollbackTransaction() {
+-        logger.error("ROLLBACK TRANSACTION");
+-    }
+-    
+-}
+Index: src/main/java/com/patres/ownframework/step6/application/dao/CompanyDao.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step6/application/dao/CompanyDao.java b/src/main/java/com/patres/ownframework/step6/application/dao/CompanyDao.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step6/application/dao/CompanyDao.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,10 +0,0 @@
+-package com.patres.ownframework.step6.application.dao;
+-
+-import com.patres.ownframework.step6.application.model.Company;
+-
+-public interface CompanyDao {
+-
+-    void createCompany(Company company);
+-
+-    void updateCompany(Company company);
+-}
+Index: src/main/java/com/patres/ownframework/step6/application/dao/CompanyDaoImpl.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step6/application/dao/CompanyDaoImpl.java b/src/main/java/com/patres/ownframework/step6/application/dao/CompanyDaoImpl.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step6/application/dao/CompanyDaoImpl.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,28 +0,0 @@
+-package com.patres.ownframework.step6.application.dao;
+-
+-import com.patres.ownframework.step6.application.model.Company;
+-import com.patres.ownframework.step6.framework.annotation.Component;
+-import com.patres.ownframework.step6.framework.annotation.Transactional;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+-
+-@Component
+-public class CompanyDaoImpl implements CompanyDao {
+-
+-    private static final Logger logger = LoggerFactory.getLogger(CompanyDaoImpl.class);
+-
+-    @Override
+-    @Transactional
+-    public void createCompany(Company company) {
+-        logger.info("DAO:   START - create company");
+-
+-        logger.info("DAO:   END - create company");
+-    }
+-
+-    @Override
+-    public void updateCompany(Company company) {
+-        logger.info("DAO:   START - update company");
+-
+-        logger.info("DAO:   END - update company");
+-    }
+-}
+Index: src/main/java/com/patres/ownframework/step6/application/model/Company.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step6/application/model/Company.java b/src/main/java/com/patres/ownframework/step6/application/model/Company.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step6/application/model/Company.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,4 +0,0 @@
+-package com.patres.ownframework.step6.application.model;
+-
+-public class Company {
+-}
+Index: src/main/java/com/patres/ownframework/step6/application/service/CompanyService.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step6/application/service/CompanyService.java b/src/main/java/com/patres/ownframework/step6/application/service/CompanyService.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step6/application/service/CompanyService.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,12 +0,0 @@
+-package com.patres.ownframework.step6.application.service;
+-
+-import com.patres.ownframework.step6.application.model.Company;
+-
+-public interface CompanyService {
+-
+-    void createCompany(Company company);
+-
+-    String generateToken(Company company);
+-
+-    void updateCompany(Company company);
+-}
+Index: src/main/java/com/patres/ownframework/step6/application/service/CompanyServiceImpl.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step6/application/service/CompanyServiceImpl.java b/src/main/java/com/patres/ownframework/step6/application/service/CompanyServiceImpl.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step6/application/service/CompanyServiceImpl.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,51 +0,0 @@
+-package com.patres.ownframework.step6.application.service;
+-
+-import com.patres.ownframework.step6.application.dao.CompanyDao;
+-import com.patres.ownframework.step6.application.model.Company;
+-import com.patres.ownframework.step6.framework.annotation.*;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+-
+-import java.util.UUID;
+-
+-@Component(scope = Scope.SINGLETON)
+-public class CompanyServiceImpl implements CompanyService {
+-
+-    private static final Logger logger = LoggerFactory.getLogger(CompanyServiceImpl.class);
+-
+-    private final CompanyDao companyDao;
+-
+-    @Autowired
+-    public CompanyServiceImpl(CompanyDao companyDao) {
+-        this.companyDao = companyDao;
+-    }
+-
+-    @Override
+-    public void createCompany(Company company) {
+-        logger.info("SERVICE:   START - create company");
+-//         companyDao.createCompany(company);
+-        createWithTransaction(company);
+-        logger.info("SERVICE:   END - create company");
+-    }
+-
+-    @Override
+-    @Cacheable
+-    public String generateToken(Company company) {
+-        return UUID.randomUUID().toString();
+-    }
+-
+-    @Transactional
+-    public void createWithTransaction(Company company) {
+-        logger.info("SERVICE:   START - createWithTransaction");
+-        companyDao.createCompany(company);
+-        logger.info("SERVICE:   END - createWithTransaction");
+-    }
+-
+-    @Override
+-    @Transactional
+-    public void updateCompany(Company company) {
+-        logger.info("SERVICE:   START - update company");
+-        companyDao.createCompany(company);
+-        logger.info("SERVICE:   END - update company");
+-    }
+-}
+Index: src/main/java/com/patres/ownframework/step6/application/Step6App.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step6/application/Step6App.java b/src/main/java/com/patres/ownframework/step6/application/Step6App.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step6/application/Step6App.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,20 +0,0 @@
+-package com.patres.ownframework.step6.application;
+-
+-import com.patres.ownframework.step6.application.service.CompanyService;
+-import com.patres.ownframework.step6.framework.ApplicationContext;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+-
+-public class Step6App {
+-
+-    private static final Logger logger = LoggerFactory.getLogger(Step6App.class);
+-
+-    public static void main(String[] args) {
+-
+-        final ApplicationContext applicationContext = new ApplicationContext(Step6App.class);
+-        final CompanyService companyServiceProxy1 = applicationContext.getBean(CompanyService.class);
+-        final CompanyService companyServiceProxy2 = applicationContext.getBean(CompanyService.class);
+-
+-        logger.info(String.valueOf(companyServiceProxy1 == companyServiceProxy2));
+-    }
+-}
+Index: src/main/java/com/patres/ownframework/step6/framework/annotation/Autowired.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step6/framework/annotation/Autowired.java b/src/main/java/com/patres/ownframework/step6/framework/annotation/Autowired.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step6/framework/annotation/Autowired.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,11 +0,0 @@
+-package com.patres.ownframework.step6.framework.annotation;
+-
+-import java.lang.annotation.ElementType;
+-import java.lang.annotation.Retention;
+-import java.lang.annotation.RetentionPolicy;
+-import java.lang.annotation.Target;
+-
+-@Target(value = ElementType.CONSTRUCTOR)
+-@Retention(RetentionPolicy.RUNTIME)
+-public @interface Autowired {
+-}
+Index: src/main/java/com/patres/ownframework/step6/framework/annotation/Cacheable.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step6/framework/annotation/Cacheable.java b/src/main/java/com/patres/ownframework/step6/framework/annotation/Cacheable.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step6/framework/annotation/Cacheable.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,11 +0,0 @@
+-package com.patres.ownframework.step6.framework.annotation;
+-
+-import java.lang.annotation.ElementType;
+-import java.lang.annotation.Retention;
+-import java.lang.annotation.RetentionPolicy;
+-import java.lang.annotation.Target;
+-
+-@Target(value = ElementType.METHOD)
+-@Retention(RetentionPolicy.RUNTIME)
+-public @interface Cacheable {
+-}
+Index: src/main/java/com/patres/ownframework/step6/framework/annotation/Component.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step6/framework/annotation/Component.java b/src/main/java/com/patres/ownframework/step6/framework/annotation/Component.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step6/framework/annotation/Component.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,13 +0,0 @@
+-package com.patres.ownframework.step6.framework.annotation;
+-
+-import java.lang.annotation.ElementType;
+-import java.lang.annotation.Retention;
+-import java.lang.annotation.RetentionPolicy;
+-import java.lang.annotation.Target;
+-
+-@Target(ElementType.TYPE)
+-@Retention(RetentionPolicy.RUNTIME)
+-public @interface Component {
+-
+-    Scope scope() default Scope.SINGLETON;
+-}
+\ No newline at end of file
+Index: src/main/java/com/patres/ownframework/step6/framework/annotation/Scope.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step6/framework/annotation/Scope.java b/src/main/java/com/patres/ownframework/step6/framework/annotation/Scope.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step6/framework/annotation/Scope.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,7 +0,0 @@
+-package com.patres.ownframework.step6.framework.annotation;
+-
+-public enum Scope {
+-
+-    SINGLETON, PROTOTYPE
+-
+-}
+Index: src/main/java/com/patres/ownframework/step6/framework/annotation/Transactional.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step6/framework/annotation/Transactional.java b/src/main/java/com/patres/ownframework/step6/framework/annotation/Transactional.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step6/framework/annotation/Transactional.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,11 +0,0 @@
+-package com.patres.ownframework.step6.framework.annotation;
+-
+-import java.lang.annotation.ElementType;
+-import java.lang.annotation.Retention;
+-import java.lang.annotation.RetentionPolicy;
+-import java.lang.annotation.Target;
+-
+-@Target(value = ElementType.METHOD)
+-@Retention(RetentionPolicy.RUNTIME)
+-public @interface Transactional {
+-}
+Index: src/main/java/com/patres/ownframework/step6/framework/exception/FrameworkException.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step6/framework/exception/FrameworkException.java b/src/main/java/com/patres/ownframework/step6/framework/exception/FrameworkException.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step6/framework/exception/FrameworkException.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,13 +0,0 @@
+-package com.patres.ownframework.step6.framework.exception;
+-
+-public class FrameworkException extends RuntimeException {
+-
+-    public FrameworkException(String message) {
+-        super(message);
+-    }
+-
+-    public FrameworkException(Throwable throwable) {
+-        super("Unknown exception", throwable);
+-    }
+-
+-}
+Index: src/main/java/com/patres/ownframework/step6/framework/ApplicationContext.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step6/framework/ApplicationContext.java b/src/main/java/com/patres/ownframework/step6/framework/ApplicationContext.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step6/framework/ApplicationContext.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,104 +0,0 @@
+-package com.patres.ownframework.step6.framework;
+-
+-import com.patres.ownframework.step6.framework.annotation.Autowired;
+-import com.patres.ownframework.step6.framework.annotation.Component;
+-import com.patres.ownframework.step6.framework.annotation.Scope;
+-import com.patres.ownframework.step6.framework.exception.FrameworkException;
+-import org.reflections.Reflections;
+-
+-import java.lang.reflect.Constructor;
+-import java.lang.reflect.Proxy;
+-import java.util.Arrays;
+-import java.util.List;
+-import java.util.Map;
+-import java.util.Set;
+-import java.util.concurrent.ConcurrentHashMap;
+-import java.util.stream.Collectors;
+-
+-public class ApplicationContext {
+-
+-    private final Map<Class<?>, Object> singletonBeans = new ConcurrentHashMap<>();
+-    private final Set<Class<?>> componentBeans;
+-
+-    public ApplicationContext(Class<?> applicationClass) {
+-        final Reflections reflections = new Reflections(applicationClass.getPackage().getName());
+-        this.componentBeans = reflections.getTypesAnnotatedWith(Component.class).stream()
+-                .filter(clazz -> !clazz.isInterface())
+-                .collect(Collectors.toSet());
+-    }
+-
+-    @SuppressWarnings("unchecked")
+-    public <T> T getBean(Class<T> clazz) {
+-        if (!clazz.isInterface()) {
+-            throw new FrameworkException("Class " + clazz.getName() + " should be an interface");
+-        }
+-        final Class<T> implementation = findImplementationByInterface(clazz);
+-
+-        final Component annotation = implementation.getAnnotation(Component.class);
+-        if (annotation.scope() == Scope.SINGLETON) {
+-            return (T) singletonBeans.computeIfAbsent(clazz, it -> createBean(clazz, implementation));
+-        }
+-        return createBean(clazz, implementation);
+-    }
+-
+-    private <T> T createBean(Class<T> clazz, Class<T> implementation) {
+-        try {
+-            final Constructor<T> constructor = findConstructor(implementation);
+-            final Object[] parameters = findConstructorParameters(constructor);
+-            final T bean = constructor.newInstance(parameters);
+-
+-            final Object proxy = Proxy.newProxyInstance(
+-                    ApplicationContext.class.getClassLoader(),
+-                    new Class[]{clazz},
+-                    new ProxyHandler(bean));
+-            return clazz.cast(proxy);
+-        } catch (FrameworkException e) {
+-            throw e;
+-        } catch (Exception e) {
+-            throw new FrameworkException(e);
+-        }
+-    }
+-
+-    private <T> Object[] findConstructorParameters(Constructor<T> constructor) {
+-        final Class<?>[] parameterTypes = constructor.getParameterTypes();
+-        return Arrays.stream(parameterTypes)
+-                .map(this::getBean)
+-                .toArray(Object[]::new);
+-    }
+-
+-    @SuppressWarnings("unchecked")
+-    private <T> Constructor<T> findConstructor(Class<T> clazz) {
+-        final Constructor<T>[] constructors = (Constructor<T>[]) clazz.getConstructors();
+-        if (constructors.length == 1) {
+-            return constructors[0];
+-        }
+-
+-        final Set<Constructor<T>> constructorsWithAnnotation = Arrays.stream(constructors)
+-                .filter(constructor -> constructor.isAnnotationPresent(Autowired.class))
+-                .collect(Collectors.toSet());
+-
+-        if (constructorsWithAnnotation.size() > 1) {
+-            throw new FrameworkException("There are more than 1 constructor with Autowired annotation: " + clazz.getName());
+-        }
+-
+-        return constructorsWithAnnotation.stream()
+-                .findFirst()
+-                .orElseThrow(() -> new FrameworkException("Cannot find constructor with annotation Autowired: " + clazz.getName()));
+-    }
+-
+-    @SuppressWarnings("unchecked")
+-    private <T> Class<T> findImplementationByInterface(Class<T> interfaceItem) {
+-        final Set<Class<?>> classesWithInterfaces = componentBeans.stream()
+-                .filter(componentBean -> List.of(componentBean.getInterfaces()).contains(interfaceItem))
+-                .collect(Collectors.toSet());
+-
+-        if (classesWithInterfaces.size() > 1) {
+-            throw new FrameworkException("There are more than 1 implementation: " + interfaceItem.getName());
+-        }
+-
+-        return (Class<T>) classesWithInterfaces.stream()
+-                .findFirst()
+-                .orElseThrow(() -> new FrameworkException("The is no class with interface: " + interfaceItem));
+-    }
+-
+-}
+Index: src/main/java/com/patres/ownframework/step6/framework/ProxyHandler.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step6/framework/ProxyHandler.java b/src/main/java/com/patres/ownframework/step6/framework/ProxyHandler.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step6/framework/ProxyHandler.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,94 +0,0 @@
+-package com.patres.ownframework.step6.framework;
+-
+-import com.patres.ownframework.step6.framework.annotation.Cacheable;
+-import com.patres.ownframework.step6.framework.annotation.Transactional;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+-
+-import java.lang.reflect.InvocationHandler;
+-import java.lang.reflect.InvocationTargetException;
+-import java.lang.reflect.Method;
+-import java.util.Arrays;
+-import java.util.HashMap;
+-import java.util.List;
+-import java.util.Map;
+-
+-public class ProxyHandler implements InvocationHandler {
+-
+-    private static final Logger logger = LoggerFactory.getLogger(ProxyHandler.class);
+-    private final Object objectToHandle;
+-
+-    private final Map<List<Object>, Object> cacheContainer = new HashMap<>();
+-
+-    public ProxyHandler(Object objectToHandle) {
+-        this.objectToHandle = objectToHandle;
+-    }
+-
+-    @Override
+-    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+-        if (isCacheable(method)) {
+-            final Object result = cacheContainer.get(createCacheKey(method, args));
+-            if (result != null) {
+-                return result;
+-            }
+-        }
+-        if (isTransactional(method)) {
+-            return handleTransaction(method, args);
+-        }
+-        return calculateResult(method, args);
+-    }
+-
+-    private Object handleTransaction(Method method, Object[] args) throws IllegalAccessException, InvocationTargetException {
+-        try {
+-            beginTransaction();
+-            final Object invoke = calculateResult(method, args);
+-            commitTransaction();
+-            return invoke;
+-        } catch (Exception e) {
+-            rollbackTransaction();
+-            throw e;
+-        }
+-    }
+-
+-    private Object calculateResult(Method method, Object[] args) throws IllegalAccessException, InvocationTargetException {
+-        final Object result = method.invoke(objectToHandle, args);
+-        if (isCacheable(method)) {
+-            cacheContainer.put(createCacheKey(method, args), result);
+-        }
+-        return result;
+-    }
+-
+-    private boolean isTransactional(Method method) {
+-        try {
+-            return objectToHandle.getClass().getMethod(method.getName(), method.getParameterTypes()).isAnnotationPresent(Transactional.class);
+-        } catch (NoSuchMethodException e) {
+-            return false;
+-        }
+-    }
+-
+-
+-    private boolean isCacheable(Method method) {
+-        try {
+-            return objectToHandle.getClass().getMethod(method.getName(), method.getParameterTypes()).isAnnotationPresent(Cacheable.class);
+-        } catch (NoSuchMethodException e) {
+-            return false;
+-        }
+-    }
+-
+-    private List<Object> createCacheKey(Method method, Object[] args) {
+-        return List.of(method, Arrays.asList(args));
+-    }
+-
+-    private void beginTransaction() {
+-        logger.debug("BEGIN TRANSACTION");
+-    }
+-
+-    private void commitTransaction() {
+-        logger.debug("COMMIT TRANSACTION");
+-    }
+-
+-    private void rollbackTransaction() {
+-        logger.error("ROLLBACK TRANSACTION");
+-    }
+-    
+-}
+Index: src/main/java/com/patres/ownframework/step7/application/dao/CompanyDao.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step7/application/dao/CompanyDao.java b/src/main/java/com/patres/ownframework/step7/application/dao/CompanyDao.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step7/application/dao/CompanyDao.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,10 +0,0 @@
+-package com.patres.ownframework.step7.application.dao;
+-
+-import com.patres.ownframework.step7.application.model.Company;
+-
+-public interface CompanyDao {
+-
+-    void createCompany(Company company);
+-
+-    void updateCompany(Company company);
+-}
+Index: src/main/java/com/patres/ownframework/step7/application/dao/CompanyDaoImpl.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step7/application/dao/CompanyDaoImpl.java b/src/main/java/com/patres/ownframework/step7/application/dao/CompanyDaoImpl.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step7/application/dao/CompanyDaoImpl.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,28 +0,0 @@
+-package com.patres.ownframework.step7.application.dao;
+-
+-import com.patres.ownframework.step7.application.model.Company;
+-import com.patres.ownframework.step7.framework.annotation.Component;
+-import com.patres.ownframework.step7.framework.annotation.Transactional;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+-
+-@Component
+-public class CompanyDaoImpl implements CompanyDao {
+-
+-    private static final Logger logger = LoggerFactory.getLogger(CompanyDaoImpl.class);
+-
+-    @Override
+-    @Transactional
+-    public void createCompany(Company company) {
+-        logger.info("DAO:   START - create company");
+-
+-        logger.info("DAO:   END - create company");
+-    }
+-
+-    @Override
+-    public void updateCompany(Company company) {
+-        logger.info("DAO:   START - update company");
+-
+-        logger.info("DAO:   END - update company");
+-    }
+-}
+Index: src/main/java/com/patres/ownframework/step7/application/model/Company.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step7/application/model/Company.java b/src/main/java/com/patres/ownframework/step7/application/model/Company.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step7/application/model/Company.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,4 +0,0 @@
+-package com.patres.ownframework.step7.application.model;
+-
+-public class Company {
+-}
+Index: src/main/java/com/patres/ownframework/step7/application/service/CompanyService.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step7/application/service/CompanyService.java b/src/main/java/com/patres/ownframework/step7/application/service/CompanyService.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step7/application/service/CompanyService.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,12 +0,0 @@
+-package com.patres.ownframework.step7.application.service;
+-
+-import com.patres.ownframework.step7.application.model.Company;
+-
+-public interface CompanyService {
+-
+-    void createCompany(Company company);
+-
+-    String generateToken(Company company);
+-
+-    void updateCompany(Company company);
+-}
+Index: src/main/java/com/patres/ownframework/step7/application/service/CompanyServiceImpl.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step7/application/service/CompanyServiceImpl.java b/src/main/java/com/patres/ownframework/step7/application/service/CompanyServiceImpl.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step7/application/service/CompanyServiceImpl.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,51 +0,0 @@
+-package com.patres.ownframework.step7.application.service;
+-
+-import com.patres.ownframework.step7.application.dao.CompanyDao;
+-import com.patres.ownframework.step7.application.model.Company;
+-import com.patres.ownframework.step7.framework.annotation.*;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+-
+-import java.util.UUID;
+-
+-@Component(scope = Scope.SINGLETON)
+-public class CompanyServiceImpl implements CompanyService {
+-
+-    private static final Logger logger = LoggerFactory.getLogger(CompanyServiceImpl.class);
+-
+-    private final CompanyDao companyDao;
+-
+-    @Autowired
+-    public CompanyServiceImpl(CompanyDao companyDao) {
+-        this.companyDao = companyDao;
+-    }
+-
+-    @Override
+-    public void createCompany(Company company) {
+-        logger.info("SERVICE:   START - create company");
+-//         companyDao.createCompany(company);
+-        createWithTransaction(company);
+-        logger.info("SERVICE:   END - create company");
+-    }
+-
+-    @Override
+-    @Cacheable
+-    public String generateToken(Company company) {
+-        return UUID.randomUUID().toString();
+-    }
+-
+-    @Transactional
+-    public void createWithTransaction(Company company) {
+-        logger.info("SERVICE:   START - createWithTransaction");
+-        companyDao.createCompany(company);
+-        logger.info("SERVICE:   END - createWithTransaction");
+-    }
+-
+-    @Override
+-    @Transactional
+-    public void updateCompany(Company company) {
+-        logger.info("SERVICE:   START - update company");
+-        companyDao.createCompany(company);
+-        logger.info("SERVICE:   END - update company");
+-    }
+-}
+Index: src/main/java/com/patres/ownframework/step7/application/Step7App.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step7/application/Step7App.java b/src/main/java/com/patres/ownframework/step7/application/Step7App.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step7/application/Step7App.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,39 +0,0 @@
+-package com.patres.ownframework.step7.application;
+-
+-import com.patres.ownframework.step7.application.model.Company;
+-import com.patres.ownframework.step7.application.service.CompanyService;
+-import com.patres.ownframework.step7.framework.ApplicationContext;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+-
+-public class Step7App {
+-
+-    private static final Logger logger = LoggerFactory.getLogger(Step7App.class);
+-
+-    public static void main(String[] args) {
+-        final ApplicationContext applicationContext = new ApplicationContext(Step7App.class);
+-        final CompanyService companyServiceProxy = applicationContext.getBean(CompanyService.class);
+-
+-        logger.info("======== Transactional ========");
+-        companyServiceProxy.createCompany(new Company());
+-        logger.info("===============================");
+-
+-
+-        logger.info("========== Cacheable ==========");
+-        final Company company1 = new Company();
+-        logger.info(companyServiceProxy.generateToken(company1));
+-        logger.info(companyServiceProxy.generateToken(company1));
+-
+-        final Company company2 = new Company();
+-        logger.info(companyServiceProxy.generateToken(company2));
+-        logger.info("===============================");
+-
+-
+-        logger.info("============= Scope ===========");
+-        final CompanyService companyServiceProxy1 = applicationContext.getBean(CompanyService.class);
+-        final CompanyService companyServiceProxy2 = applicationContext.getBean(CompanyService.class);
+-
+-        logger.info(String.valueOf(companyServiceProxy1 == companyServiceProxy2));
+-        logger.info("===============================");
+-    }
+-}
+Index: src/main/java/com/patres/ownframework/step7/framework/annotation/Autowired.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step7/framework/annotation/Autowired.java b/src/main/java/com/patres/ownframework/step7/framework/annotation/Autowired.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step7/framework/annotation/Autowired.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,11 +0,0 @@
+-package com.patres.ownframework.step7.framework.annotation;
+-
+-import java.lang.annotation.ElementType;
+-import java.lang.annotation.Retention;
+-import java.lang.annotation.RetentionPolicy;
+-import java.lang.annotation.Target;
+-
+-@Target(value = ElementType.CONSTRUCTOR)
+-@Retention(RetentionPolicy.RUNTIME)
+-public @interface Autowired {
+-}
+Index: src/main/java/com/patres/ownframework/step7/framework/annotation/Cacheable.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step7/framework/annotation/Cacheable.java b/src/main/java/com/patres/ownframework/step7/framework/annotation/Cacheable.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step7/framework/annotation/Cacheable.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,11 +0,0 @@
+-package com.patres.ownframework.step7.framework.annotation;
+-
+-import java.lang.annotation.ElementType;
+-import java.lang.annotation.Retention;
+-import java.lang.annotation.RetentionPolicy;
+-import java.lang.annotation.Target;
+-
+-@Target(value = ElementType.METHOD)
+-@Retention(RetentionPolicy.RUNTIME)
+-public @interface Cacheable {
+-}
+Index: src/main/java/com/patres/ownframework/step7/framework/annotation/Component.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step7/framework/annotation/Component.java b/src/main/java/com/patres/ownframework/step7/framework/annotation/Component.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step7/framework/annotation/Component.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,13 +0,0 @@
+-package com.patres.ownframework.step7.framework.annotation;
+-
+-import java.lang.annotation.ElementType;
+-import java.lang.annotation.Retention;
+-import java.lang.annotation.RetentionPolicy;
+-import java.lang.annotation.Target;
+-
+-@Target(ElementType.TYPE)
+-@Retention(RetentionPolicy.RUNTIME)
+-public @interface Component {
+-
+-    Scope scope() default Scope.SINGLETON;
+-}
+\ No newline at end of file
+Index: src/main/java/com/patres/ownframework/step7/framework/annotation/Scope.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step7/framework/annotation/Scope.java b/src/main/java/com/patres/ownframework/step7/framework/annotation/Scope.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step7/framework/annotation/Scope.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,7 +0,0 @@
+-package com.patres.ownframework.step7.framework.annotation;
+-
+-public enum Scope {
+-
+-    SINGLETON, PROTOTYPE
+-
+-}
+Index: src/main/java/com/patres/ownframework/step7/framework/annotation/Transactional.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step7/framework/annotation/Transactional.java b/src/main/java/com/patres/ownframework/step7/framework/annotation/Transactional.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step7/framework/annotation/Transactional.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,11 +0,0 @@
+-package com.patres.ownframework.step7.framework.annotation;
+-
+-import java.lang.annotation.ElementType;
+-import java.lang.annotation.Retention;
+-import java.lang.annotation.RetentionPolicy;
+-import java.lang.annotation.Target;
+-
+-@Target(value = ElementType.METHOD)
+-@Retention(RetentionPolicy.RUNTIME)
+-public @interface Transactional {
+-}
+Index: src/main/java/com/patres/ownframework/step7/framework/exception/FrameworkException.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step7/framework/exception/FrameworkException.java b/src/main/java/com/patres/ownframework/step7/framework/exception/FrameworkException.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step7/framework/exception/FrameworkException.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,13 +0,0 @@
+-package com.patres.ownframework.step7.framework.exception;
+-
+-public class FrameworkException extends RuntimeException {
+-
+-    public FrameworkException(String message) {
+-        super(message);
+-    }
+-
+-    public FrameworkException(Throwable throwable) {
+-        super("Unknown exception", throwable);
+-    }
+-
+-}
+Index: src/main/java/com/patres/ownframework/step7/framework/handler/AbstractProxyHandler.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step7/framework/handler/AbstractProxyHandler.java b/src/main/java/com/patres/ownframework/step7/framework/handler/AbstractProxyHandler.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step7/framework/handler/AbstractProxyHandler.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,30 +0,0 @@
+-package com.patres.ownframework.step7.framework.handler;
+-
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+-
+-import java.lang.annotation.Annotation;
+-import java.lang.reflect.Method;
+-
+-public abstract class AbstractProxyHandler {
+-
+-    private static final Logger logger = LoggerFactory.getLogger(AbstractProxyHandler.class);
+-
+-    private final Object objectToHandle;
+-    private final Class<? extends Annotation> annotation;
+-
+-    public AbstractProxyHandler(final Object objectToHandle, final Class<? extends Annotation> annotation) {
+-        this.objectToHandle = objectToHandle;
+-        this.annotation = annotation;
+-    }
+-
+-    public boolean isSupported(final Method method) {
+-        try {
+-            return objectToHandle.getClass().getMethod(method.getName(), method.getParameterTypes()).isAnnotationPresent(annotation);
+-        } catch (NoSuchMethodException e) {
+-            logger.error("Method is not supported", e);
+-            return false;
+-        }
+-    }
+-
+-}
+Index: src/main/java/com/patres/ownframework/step7/framework/handler/CacheableHandler.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step7/framework/handler/CacheableHandler.java b/src/main/java/com/patres/ownframework/step7/framework/handler/CacheableHandler.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step7/framework/handler/CacheableHandler.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,27 +0,0 @@
+-package com.patres.ownframework.step7.framework.handler;
+-
+-import com.patres.ownframework.step7.framework.annotation.Cacheable;
+-
+-import java.lang.reflect.Method;
+-import java.util.*;
+-import java.util.concurrent.ConcurrentHashMap;
+-import java.util.function.Supplier;
+-
+-public class CacheableHandler extends AbstractProxyHandler {
+-
+-    private final Map<List<Object>, Object> cacheContainers = new ConcurrentHashMap<>();
+-
+-    public CacheableHandler(final Object objectToHandle) {
+-        super(objectToHandle, Cacheable.class);
+-    }
+-
+-    public List<Object> createKeyCache(final Method method, final Object[] args) {
+-        return List.of(method, Arrays.asList(args));
+-    }
+-
+-    public Object takeResultOrCalculate(final Method method, Object[] args, final Supplier<Object> resultSupplier) {
+-        final List<Object> keyCache = createKeyCache(method, args);
+-        return cacheContainers.computeIfAbsent(keyCache, key -> resultSupplier.get());
+-    }
+-
+-}
+Index: src/main/java/com/patres/ownframework/step7/framework/handler/ProxyInvocationHandler.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step7/framework/handler/ProxyInvocationHandler.java b/src/main/java/com/patres/ownframework/step7/framework/handler/ProxyInvocationHandler.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step7/framework/handler/ProxyInvocationHandler.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,44 +0,0 @@
+-package com.patres.ownframework.step7.framework.handler;
+-
+-import com.patres.ownframework.step7.framework.exception.FrameworkException;
+-
+-import java.lang.reflect.InvocationHandler;
+-import java.lang.reflect.InvocationTargetException;
+-import java.lang.reflect.Method;
+-
+-public class ProxyInvocationHandler implements InvocationHandler {
+-
+-    private final Object objectToHandle;
+-    private final CacheableHandler cacheHandler;
+-    private final TransactionalHandler transactionHandler;
+-
+-    public ProxyInvocationHandler(final Object objectToHandle) {
+-        this.objectToHandle = objectToHandle;
+-        this.cacheHandler = new CacheableHandler(objectToHandle);
+-        this.transactionHandler = new TransactionalHandler(objectToHandle);
+-    }
+-
+-    @Override
+-    public Object invoke(final Object proxy, final Method method, final Object[] args) {
+-        if (cacheHandler.isSupported(method)) {
+-            return cacheHandler.takeResultOrCalculate(method, args, () -> calculateResult(method, args));
+-        }
+-        return calculateResult(method, args);
+-    }
+-
+-    private Object calculateResult(final Method method, final Object[] args) {
+-        if (transactionHandler.isSupported(method)) {
+-            return transactionHandler.executeWithTransaction(() -> invokeMethod(method, args));
+-        }
+-        return invokeMethod(method, args);
+-    }
+-
+-    private Object invokeMethod(final Method method, final Object[] args) {
+-        try {
+-            return method.invoke(objectToHandle, args);
+-        } catch (IllegalAccessException | InvocationTargetException e) {
+-            throw new FrameworkException(e);
+-        }
+-    }
+-
+-}
+Index: src/main/java/com/patres/ownframework/step7/framework/handler/TransactionalHandler.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step7/framework/handler/TransactionalHandler.java b/src/main/java/com/patres/ownframework/step7/framework/handler/TransactionalHandler.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step7/framework/handler/TransactionalHandler.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,41 +0,0 @@
+-package com.patres.ownframework.step7.framework.handler;
+-
+-import com.patres.ownframework.step7.framework.annotation.Transactional;
+-import org.slf4j.Logger;
+-import org.slf4j.LoggerFactory;
+-
+-import java.util.function.Supplier;
+-
+-public class TransactionalHandler extends AbstractProxyHandler {
+-
+-    private static final Logger logger = LoggerFactory.getLogger(TransactionalHandler.class);
+-
+-    public TransactionalHandler(final Object objectToHandle) {
+-        super(objectToHandle, Transactional.class);
+-    }
+-
+-    public Object executeWithTransaction(final Supplier<Object> resultSupplier) {
+-        beginTransaction();
+-        try {
+-            Object result = resultSupplier.get();
+-            commitTransaction();
+-            return result;
+-        } catch (Exception e) {
+-            rollbackTransaction();
+-            throw e;
+-        }
+-    }
+-
+-    private void beginTransaction() {
+-        logger.debug("BEGIN TRANSACTION");
+-    }
+-
+-    private void commitTransaction() {
+-        logger.debug("COMMIT TRANSACTION");
+-    }
+-
+-    private void rollbackTransaction() {
+-        logger.error("ROLLBACK TRANSACTION");
+-    }
+-
+-}
+Index: src/main/java/com/patres/ownframework/step7/framework/ApplicationContext.java
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step7/framework/ApplicationContext.java b/src/main/java/com/patres/ownframework/step7/framework/ApplicationContext.java
+deleted file mode 100644
+--- a/src/main/java/com/patres/ownframework/step7/framework/ApplicationContext.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ /dev/null	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
+@@ -1,108 +0,0 @@
+-package com.patres.ownframework.step7.framework;
+-
+-import com.patres.ownframework.step7.framework.annotation.Autowired;
+-import com.patres.ownframework.step7.framework.annotation.Component;
+-import com.patres.ownframework.step7.framework.annotation.Scope;
+-import com.patres.ownframework.step7.framework.exception.FrameworkException;
+-import com.patres.ownframework.step7.framework.handler.ProxyInvocationHandler;
+-import org.reflections.Reflections;
+-
+-import java.lang.reflect.Constructor;
+-import java.lang.reflect.Proxy;
+-import java.util.Arrays;
+-import java.util.List;
+-import java.util.Map;
+-import java.util.Set;
+-import java.util.concurrent.ConcurrentHashMap;
+-import java.util.stream.Collectors;
+-
+-public class ApplicationContext {
+-
+-    private final Map<Class<?>, Object> singletonBeans = new ConcurrentHashMap<>();
+-    private final Set<Class<?>> componentBeans;
+-
+-    public ApplicationContext(Class<?> applicationClass) {
+-        final Reflections reflections = new Reflections(applicationClass.getPackage().getName());
+-        this.componentBeans = reflections.getTypesAnnotatedWith(Component.class).stream()
+-                .filter(clazz -> !clazz.isInterface())
+-                .collect(Collectors.toSet());
+-    }
+-
+-    @SuppressWarnings("unchecked")
+-    public <T> T getBean(Class<T> clazz) {
+-        if (!clazz.isInterface()) {
+-            throw new FrameworkException("Class " + clazz.getName() + " should be an interface");
+-        }
+-
+-
+-        final Class<T> implementation = findImplementationByInterface(clazz);
+-
+-        final Component annotation = implementation.getAnnotation(Component.class);
+-        if (annotation.scope() == Scope.SINGLETON) {
+-            return (T) singletonBeans.computeIfAbsent(clazz, it -> createBean(clazz, implementation));
+-        }
+-
+-        return createBean(clazz, implementation);
+-    }
+-
+-    private <T> T createBean(Class<T> clazz, Class<T> implementation) {
+-        try {
+-            final Constructor<T> constructor = findConstructor(implementation);
+-            final Object[] parameters = findConstructorParameters(constructor);
+-            final T bean = constructor.newInstance(parameters);
+-
+-            final Object proxy = Proxy.newProxyInstance(
+-                    ApplicationContext.class.getClassLoader(),
+-                    new Class[]{clazz},
+-                    new ProxyInvocationHandler(bean));
+-            return clazz.cast(proxy);
+-        } catch (FrameworkException e) {
+-            throw e;
+-        } catch (Exception e) {
+-            throw new FrameworkException(e);
+-        }
+-    }
+-
+-    private <T> Object[] findConstructorParameters(Constructor<T> constructor) {
+-        final Class<?>[] parameterTypes = constructor.getParameterTypes();
+-        return Arrays.stream(parameterTypes)
+-                .map(this::getBean)
+-                .toArray(Object[]::new);
+-    }
+-
+-    @SuppressWarnings("unchecked")
+-    private <T> Constructor<T> findConstructor(Class<T> clazz) {
+-        final Constructor<T>[] constructors = (Constructor<T>[]) clazz.getConstructors();
+-        if (constructors.length == 1) {
+-            return constructors[0];
+-        }
+-
+-        final Set<Constructor<T>> constructorsWithAnnotation = Arrays.stream(constructors)
+-                .filter(constructor -> constructor.isAnnotationPresent(Autowired.class))
+-                .collect(Collectors.toSet());
+-
+-        if (constructorsWithAnnotation.size() > 1) {
+-            throw new FrameworkException("There are more than 1 constructor with Autowired annotation: " + clazz.getName());
+-        }
+-
+-        return constructorsWithAnnotation.stream()
+-                .findFirst()
+-                .orElseThrow(() -> new FrameworkException("Cannot find constructor with annotation Autowired: " + clazz.getName()));
+-    }
+-
+-    @SuppressWarnings("unchecked")
+-    private <T> Class<T> findImplementationByInterface(Class<T> interfaceItem) {
+-        final Set<Class<?>> classesWithInterfaces = componentBeans.stream()
+-                .filter(componentBean -> List.of(componentBean.getInterfaces()).contains(interfaceItem))
+-                .collect(Collectors.toSet());
+-
+-        if (classesWithInterfaces.size() > 1) {
+-            throw new FrameworkException("There are more than 1 implementation: " + interfaceItem.getName());
+-        }
+-
+-        return (Class<T>) classesWithInterfaces.stream()
+-                .findFirst()
+-                .orElseThrow(() -> new FrameworkException("The is no class with interface: " + interfaceItem));
+-    }
+-
+-}
+Index: src/main/java/com/patres/ownframework/step7/package-info.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step7/package-info.java b/src/main/java/com/patres/ownframework/step7/package-info.java
+new file mode 100644
+--- /dev/null	(date 1664722557282)
++++ b/src/main/java/com/patres/ownframework/step7/package-info.java	(date 1664722557282)
+@@ -0,0 +1,1 @@
++package com.patres.ownframework.step7;
+\ No newline at end of file
+Index: src/main/java/com/patres/ownframework/step6/package-info.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step6/package-info.java b/src/main/java/com/patres/ownframework/step6/package-info.java
+new file mode 100644
+--- /dev/null	(date 1664722557140)
++++ b/src/main/java/com/patres/ownframework/step6/package-info.java	(date 1664722557140)
+@@ -0,0 +1,1 @@
++package com.patres.ownframework.step6;
+\ No newline at end of file
+Index: src/main/java/com/patres/ownframework/step3/package-info.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step3/package-info.java b/src/main/java/com/patres/ownframework/step3/package-info.java
+new file mode 100644
+--- /dev/null	(date 1664722556835)
++++ b/src/main/java/com/patres/ownframework/step3/package-info.java	(date 1664722556835)
+@@ -0,0 +1,1 @@
++package com.patres.ownframework.step3;
+\ No newline at end of file
+Index: src/main/java/com/patres/ownframework/step2a/package-info.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step2a/package-info.java b/src/main/java/com/patres/ownframework/step2a/package-info.java
+new file mode 100644
+--- /dev/null	(date 1664722556681)
++++ b/src/main/java/com/patres/ownframework/step2a/package-info.java	(date 1664722556681)
+@@ -0,0 +1,1 @@
++package com.patres.ownframework.step2a;
+\ No newline at end of file
+Index: src/main/java/com/patres/ownframework/step5/package-info.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step5/package-info.java b/src/main/java/com/patres/ownframework/step5/package-info.java
+new file mode 100644
+--- /dev/null	(date 1664722557017)
++++ b/src/main/java/com/patres/ownframework/step5/package-info.java	(date 1664722557017)
+@@ -0,0 +1,1 @@
++package com.patres.ownframework.step5;
+\ No newline at end of file
+Index: src/main/java/com/patres/ownframework/step4/package-info.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step4/package-info.java b/src/main/java/com/patres/ownframework/step4/package-info.java
+new file mode 100644
+--- /dev/null	(date 1664722556938)
++++ b/src/main/java/com/patres/ownframework/step4/package-info.java	(date 1664722556938)
+@@ -0,0 +1,1 @@
++package com.patres.ownframework.step4;
+\ No newline at end of file
+Index: src/main/java/com/patres/ownframework/step1/application/service/CompanyServiceImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step1/application/service/CompanyServiceImpl.java b/src/main/java/com/patres/ownframework/step1/application/service/CompanyServiceImpl.java
+--- a/src/main/java/com/patres/ownframework/step1/application/service/CompanyServiceImpl.java	(revision 6917ec6fbf49f4c47f9b615876163e3e89dce7e0)
++++ b/src/main/java/com/patres/ownframework/step1/application/service/CompanyServiceImpl.java	(date 1664722614184)
+@@ -17,45 +17,16 @@
+ 
+     @Override
+     public void createCompany(Company company) {
+-        try {
+-            beginTransaction();
+-
+-            logger.info("SERVICE:   START - create company");
+-            companyDao.createCompany(company);
+-            logger.info("SERVICE:   END - create company");
+-
+-            commitTransaction();
+-        } catch (Exception e) {
+-            rollbackTransaction();
+-            throw e;
+-        }
++        logger.info("SERVICE:   START - create company");
++        companyDao.createCompany(company);
++        logger.info("SERVICE:   END - create company");
+     }
+ 
+     @Override
+     public void updateCompany(Company company) {
+-        try {
+-            beginTransaction();
+-
+-            logger.info("SERVICE:   START - update company");
+-            companyDao.createCompany(company);
+-            logger.info("SERVICE:   END - update company");
+-
+-            commitTransaction();
+-        } catch (Exception e) {
+-            rollbackTransaction();
+-            throw e;
+-        }
+-    }
+-
+-    private void beginTransaction() {
+-        logger.debug("BEGIN TRANSACTION");
++        logger.info("SERVICE:   START - update company");
++        companyDao.createCompany(company);
++        logger.info("SERVICE:   END - update company");
+     }
+ 
+-    private void commitTransaction() {
+-        logger.debug("COMMIT TRANSACTION");
+-    }
+-
+-    private void rollbackTransaction() {
+-        logger.error("ROLLBACK TRANSACTION");
+-    }
+ }
+Index: src/main/java/com/patres/ownframework/step2b/package-info.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/patres/ownframework/step2b/package-info.java b/src/main/java/com/patres/ownframework/step2b/package-info.java
+new file mode 100644
+--- /dev/null	(date 1664462498033)
++++ b/src/main/java/com/patres/ownframework/step2b/package-info.java	(date 1664462498033)
+@@ -0,0 +1,1 @@
++package com.patres.ownframework.step2b;
+\ No newline at end of file
