@@ -7,6 +7,11 @@ The goal of this project is to show how a dependency injection framework such as
 The repository will demonstrate step by step how to build your own framework. Of course this is only a simplified form.
 Spring has been developed for almost 20 years by hundreds of developers, so we will barely come close. However, the repository will show the concept of such a framework and prove that there is no magic hidden there.
 
+### Videos:
+* The Magic of Spring • Patryk Piechaczek • Devoxx Poland 2021 - https://www.youtube.com/watch?v=5gttHK04lQ4
+* JDD 2022: Patryk Piechaczek - The Magic of Spring - how does it really work? - https://www.youtube.com/watch?v=p_zTjkos8p0
+* [PL] Bydgoszcz JUG - Meetup #39 - https://www.youtube.com/live/pyA6-tVg2yI?feature=share&t=3719
+
 In the repository you will find [packages](https://github.com/Patresss/Java-Own-Framework---step-by-step/tree/main/src/main/java/com/patres/ownframework) with each step, and below is a description of them:
 
 ---
