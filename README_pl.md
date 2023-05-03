@@ -6,6 +6,11 @@ Repozytorium zademonstruje krok po kroku, w jaki sposób zbudować własny frame
 Spring jest rozwijany od prawie 20 lat przez setki programistów, więc ledwo zbliżymy się do niego. Jednak repozytorium
 pokaże koncept takiego frameworka i udowodni, że nie kryje się tam żadna magia.
 
+### Filmy:
+* The Magic of Spring • Patryk Piechaczek • Devoxx Poland 2021 - https://www.youtube.com/watch?v=5gttHK04lQ4
+* JDD 2022: Patryk Piechaczek - The Magic of Spring - how does it really work? - https://www.youtube.com/watch?v=p_zTjkos8p0
+* [PL] Bydgoszcz JUG - Meetup #39 - https://www.youtube.com/live/pyA6-tVg2yI?feature=share&t=3719
+
 W repozytorium znajdziecie [pakiety](https://github.com/Patresss/Java-Own-Framework---step-by-step/tree/main/src/main/java/com/patres/ownframework) z poszczególnymi krokami, a poniżej jest ich omówienie:
 
 ---
